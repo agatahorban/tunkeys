@@ -7,8 +7,6 @@ package agh.musicapplication.mappservices;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.inject.Named;
-import javax.inject.Scope;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +17,15 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class GradeCountingService {
-    public Map<Integer,Double> countNewGrade(int oldCount, double oldGrade, int newGrade){
+
+    public Map<Integer, Double> countNewGrade(int oldCount, double oldGrade, int newGrade) {
         Map<Integer, Double> map = new HashMap<>();
-        double newValue = oldGrade * oldCount + 1.0 * newGrade;
-        map.put(oldCount+1, newValue);
+        if (oldCount == 0) {
+            map.put(1, (double) newGrade);
+        } else {
+            double newValue = (oldGrade * oldCount + 1.0 * newGrade) / (double) (oldCount + 1.0);
+            map.put(oldCount + 1, newValue);
+        }
         return map;
     }
 }

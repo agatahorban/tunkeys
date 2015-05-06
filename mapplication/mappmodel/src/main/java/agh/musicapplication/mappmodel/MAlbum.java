@@ -6,6 +6,7 @@
 
 package agh.musicapplication.mappmodel;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +43,8 @@ public class MAlbum extends MBasicEntity {
     private List<MAlbumSong> mAlbumSongs;
 
     public MAlbum() {
+        mUserAlbums = new ArrayList<>();
+        mAlbumSongs = new ArrayList<>();
     }
 
     public String getName() {
