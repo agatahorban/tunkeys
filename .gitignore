@@ -8,3 +8,7 @@
 **/lib/**
 **/nb-configuration.xml
 **/nbactions.xml
+/mapplication/mappview/target/
+/mapplication/mappmodel/target/
+/mapplication/mappdao/target/
+/mapplication/mappservices/target/

@@ -43,6 +43,7 @@ public class MBand extends MBasicEntity {
 
     public MBand() {
         mUserBands = new ArrayList<>();
+        mAlbums = new ArrayList<>();
     }
 
     public List<MUserBand> getmUserBands() {

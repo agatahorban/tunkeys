@@ -23,6 +23,7 @@ public class TestController implements Serializable {
 
     private MUser user;
     private MReview review;
+    private String bandName;
 
     @Inject
     private TestService ts;
@@ -39,6 +40,10 @@ public class TestController implements Serializable {
         review.setDescripton("desc");
         ts.testMethod(review);
     }
+    
+    public String goToBand(){
+        return "/protected/band.xhtml?faces-redirect=true&bandname="+bandName;
+    }
 
     public MUser getUser() {
         return user;
@@ -47,4 +52,30 @@ public class TestController implements Serializable {
     public void setUser(MUser user) {
         this.user = user;
     }
+
+    public MReview getReview() {
+        return review;
+    }
+
+    public void setReview(MReview review) {
+        this.review = review;
+    }
+
+    public String getBandName() {
+        return bandName;
+    }
+
+    public void setBandName(String bandName) {
+        this.bandName = bandName;
+    }
+
+    public TestService getTs() {
+        return ts;
+    }
+
+    public void setTs(TestService ts) {
+        this.ts = ts;
+    }
+    
+    
 }
