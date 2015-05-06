@@ -18,9 +18,9 @@ import org.springframework.context.annotation.Scope;
  *
  * @author Agatka
  */
-@Named("test")
+@Named("redir")
 @Scope("session")
-public class TestController implements Serializable {
+public class RedirectController implements Serializable {
 
     private MUser user;
     private MReview review;
@@ -29,7 +29,7 @@ public class TestController implements Serializable {
     @Inject
     private ReviewServiceInterface ts;
 
-    public TestController() {
+    public RedirectController() {
         user = new MUser();
         user.setLogin("login");
 
