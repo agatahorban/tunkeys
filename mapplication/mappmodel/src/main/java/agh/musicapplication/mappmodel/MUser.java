@@ -84,8 +84,7 @@ public class MUser extends MBasicEntity {
     private Collection<MPermission> roles = new HashSet<>();
 
     public MUser() {
-        mUserReviews = new ArrayList<>();
-        mUserBands = new ArrayList<>();
+        initializeArrays();
     }
 
     public MUser(String login, String password, String name, String surname, String rank, Date age, String description) {
@@ -96,6 +95,16 @@ public class MUser extends MBasicEntity {
         this.rank = rank;
         this.age = age;
         this.description = description;
+        initializeArrays();
+    }
+    
+    private void initializeArrays(){
+        mUserReviews = new ArrayList<>();
+        mUserBands = new ArrayList<>();
+        mUserAlbums = new ArrayList<>();
+        mUserSongs = new ArrayList<>();
+        mUserSingiels = new ArrayList<>();
+        
     }
 
     public String getLogin() {

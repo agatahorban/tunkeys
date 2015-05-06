@@ -6,6 +6,7 @@
 
 package agh.musicapplication.mappdao;
 
+import agh.musicapplication.mappdao.interfaces.MReviewRepositoryInterface;
 import agh.musicapplication.mappmodel.MReview;
 import java.io.Serializable;
 import org.springframework.stereotype.Repository;
@@ -17,6 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class MReviewRepository extends AbstractCrudRepository<MReview> implements Serializable{
+public class MReviewRepository extends AbstractCrudRepository<MReview> implements Serializable, MReviewRepositoryInterface{
     
 }

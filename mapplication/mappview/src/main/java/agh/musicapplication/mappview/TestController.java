@@ -7,7 +7,8 @@ package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappmodel.MReview;
 import agh.musicapplication.mappmodel.MUser;
-import agh.musicapplication.mappservices.TestService;
+import agh.musicapplication.mappservices.ReviewService;
+import agh.musicapplication.mappservices.interfaces.ReviewServiceInterface;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -26,7 +27,7 @@ public class TestController implements Serializable {
     private String bandName;
 
     @Inject
-    private TestService ts;
+    private ReviewServiceInterface ts;
 
     public TestController() {
         user = new MUser();
@@ -38,7 +39,7 @@ public class TestController implements Serializable {
         review = new MReview();
         review.setName("review");
         review.setDescripton("desc");
-        ts.testMethod(review);
+        ts.addNewReview(review);
     }
     
     public String goToBand(){
@@ -69,11 +70,11 @@ public class TestController implements Serializable {
         this.bandName = bandName;
     }
 
-    public TestService getTs() {
+    public ReviewServiceInterface getTs() {
         return ts;
     }
 
-    public void setTs(TestService ts) {
+    public void setTs(ReviewService ts) {
         this.ts = ts;
     }
     

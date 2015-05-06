@@ -54,7 +54,9 @@ public class BandController {
         this.currentBand = currentBand;
     }
 
-    
+    public String goToBandCreating(){
+        return "/protected/createband.xhtml";
+    }
 
  
     

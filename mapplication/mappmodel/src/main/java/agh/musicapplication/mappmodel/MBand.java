@@ -33,7 +33,7 @@ public class MBand extends MBasicEntity {
     private String description;
 
     @Column
-    private int grade;
+    private double grade;
     
     @Column
     private String cover;
@@ -70,11 +70,11 @@ public class MBand extends MBasicEntity {
         this.description = description;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 

@@ -8,12 +8,12 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <h:form id="createb" >
+      <ui:composition template="/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <h1>Create new band</h1>
+
+ <h:form id="createb" >
 
                 
                    
@@ -30,5 +30,9 @@ and open the template in the editor.
                                       action="#{createband.addBand()}"/>
                 
             </h:form>
-    </body>
+           
+        </ui:define>
+    </ui:composition>
 </html>
+
+

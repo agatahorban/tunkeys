@@ -28,7 +28,7 @@ public class MReview extends MBasicEntity {
     @Column
     private String descripton;
     @Column
-    private int grade;
+    private double grade;
 
     @Column(name = "number_of_votes")
     private int numberOfVotes;
@@ -61,11 +61,11 @@ public class MReview extends MBasicEntity {
         this.descripton = descripton;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 
@@ -76,6 +76,5 @@ public class MReview extends MBasicEntity {
     public void setNumberOfVotes(int numberOfVotes) {
         this.numberOfVotes = numberOfVotes;
     }
-    
-    
+
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package agh.musicapplication.mappmodel;
 
 import java.util.List;
@@ -19,11 +18,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "msingiel")
 public class MSingiel extends MBasicEntity {
-    
+
     @Column
     private String name;
     @Column
-    private int grade;
+    private double grade;
     @Column(name = "number_of_votes")
     private int numberOfVotes;
     @Column
@@ -41,11 +40,11 @@ public class MSingiel extends MBasicEntity {
         this.name = name;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 
@@ -80,6 +79,5 @@ public class MSingiel extends MBasicEntity {
     public void setmSingielSongs(List<MSingielSong> mSingielSongs) {
         this.mSingielSongs = mSingielSongs;
     }
-    
-    
+
 }

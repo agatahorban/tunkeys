@@ -11,9 +11,19 @@ and open the template in the editor.
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-            <h1>#{band.currentBand.name}</h1>
-            <div>#{band.currentBand.description}</div>
+            <h1>Bands</h1>
+            <h:form>
+                <h:inputText id="bandInput" value="#{test.bandName}" required="true" />
+                <h:commandButton value="Search" type="submit" action="#{test.goToBand()}" />
+            </h:form>
+            <h:form > 
+                <h:commandButton value="Add new band" 
+                                 action="#{band.goToBandCreating()}"/>
+
+            </h:form>
 
         </ui:define>
     </ui:composition>
 </html>
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>tunkeys</title>
+
+        <h:outputStylesheet library="css" name="newcss.css"/>
+        <ui:insert name="head"/>
+    </h:head>
+    <h:body>
+        <div id="logo"><img src="#{resource['img/czesc1.jpg']}"></img><img src="#{resource['img/czesc2.jpg']}" ></img><a id="b">Artists</a><a id="b2" href="bands.xhtml">Bands</a><a id="b3">CDs and singles</a><img id="av" src="#{resource['img/avatar.png']}"></img>
+                    <a id="b4">Agata</a><img id="wysun" src="#{resource['img/wysun.png']}"></img></div>
+        <div id="main">
+                            <ui:insert name="body"/>
+        </div>
+    </h:body>
+</html>

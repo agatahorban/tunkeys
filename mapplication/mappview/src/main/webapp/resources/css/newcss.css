@@ -1,0 +1,143 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	}
+
+header, section, footer, aside, nav, article {
+	display: block;
+	}
+
+html, body {
+	background-color: #3D3D3D;
+
+	color: #968AA4;	
+	font-family: arial;
+	font-size: 10px;
+	letter-spacing: 0pt;
+	margin: 0;
+	padding: 0;
+}
+
+
+h1 {
+font-family: arial;
+color: black;
+font-size: 20px;
+}
+
+h2 {
+font-family: arial;
+color: black;
+font-size: 14px;
+}
+
+
+#logo {
+
+	position: fixed;
+	background-image: url("#{resource['img/tlo.jpg']}");
+	background-repeat: repeat-x;
+	left: 0px;
+	top: 0px;	
+	margin: auto;
+	text-align: justify;
+	border: 0;
+	align: right;
+	width: 100%;
+	z-index:2;
+	}
+
+#main {
+
+	position: relative;
+	margin: 100px 0 0 -35%;
+	left: 50%;
+	width:70%;
+	height: 2000px;
+	border: 1px rgb(89,89,89) ridge;
+	text-align: justify;
+	background-color: #F2E1D2;
+	z-index:1;
+	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+
+	-moz-box-shadow:  0px 0px 3px 0px rgb(128,128,128);
+	-webkit-box-shadow:  0px 0px 3px 0px rgb(128,128,128);
+	box-shadow:  0px 0px 3px 0px rgb(128,128,128);
+	}
+
+	
+#b {
+	position: relative;
+	left: 80px;
+	top: -30px;
+	text-align: justify;
+	padding: 5px;
+	font: 18px arial;
+	color: #876FA7;
+	}
+	
+#b2 {
+	position: relative;
+	left: 140px;
+	top: -30px;
+	text-align: justify;
+	padding: 5px;
+	font: 18px arial;
+	color: #876FA7;
+	}
+
+	#av{
+	position: relative;
+	left: 450px;
+	top: -10px;
+	text-align: justify;
+	padding: 5px;
+	font: 18px arial;
+	color: #876FA7;
+	}
+	
+	#wysun{
+	position: relative;
+	left: 455px;
+	top: -20px;
+	text-align: justify;
+	padding: 5px;
+	font: 18px arial;
+	color: #876FA7;
+	}
+	
+#b3 {
+	position: relative;
+	left: 190px;
+	top: -30px;
+	text-align: justify;
+	padding: 5px;
+	font: 18px arial;
+	color: #876FA7;
+	}
+
+	#b4 {
+	position: relative;
+	left: 455px;
+	top: -30px;
+	text-align: justify;
+	padding: 5px;
+	font: 18px arial;
+	color: #876FA7;
+	}
+
+	
+p {
+padding: 0px;
+margin: 5px;
+}
+
+hr{
+    border: 0;
+    border-bottom: 1px dashed black;
+}
