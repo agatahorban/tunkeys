@@ -10,4 +10,5 @@
     <context:component-scan base-package="agh.musicapplication.mappview" />
     
     <import resource="classpath:/springresources/spring-services.xml"/> 
+    <import resource="classpath:/springresources/spring-security.xml"/> 
 </beans>

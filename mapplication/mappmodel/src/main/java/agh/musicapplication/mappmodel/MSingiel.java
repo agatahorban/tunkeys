@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package agh.musicapplication.mappmodel;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,44 +14,24 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Agatka
+ * @author ag
  */
 @Entity
-@Table(name = "mband")
-public class MBand extends MBasicEntity {
-
-    @OneToMany(mappedBy = "band")
-    private List<MUserBand> mUserBands;
+@Table(name = "msingiel")
+public class MSingiel extends MBasicEntity {
     
-    @OneToMany(mappedBy = "band")
-    private List<MAlbum> mAlbums;
-
     @Column
     private String name;
-
-    @Column
-    private String description;
-
     @Column
     private int grade;
-    
-    @Column
-    private String cover;
-
     @Column(name = "number_of_votes")
     private int numberOfVotes;
-
-    public MBand() {
-        mUserBands = new ArrayList<>();
-    }
-
-    public List<MUserBand> getmUserBands() {
-        return mUserBands;
-    }
-
-    public void setmUserBands(List<MUserBand> mUserBands) {
-        this.mUserBands = mUserBands;
-    }
+    @Column
+    private String cover;
+    @OneToMany(mappedBy = "singiel")
+    private List<MUserSingiel> mUserSingiels;
+    @OneToMany(mappedBy = "singiel")
+    private List<MSingielSong> mSingielSongs;
 
     public String getName() {
         return name;
@@ -59,14 +39,6 @@ public class MBand extends MBasicEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getGrade() {
@@ -85,20 +57,28 @@ public class MBand extends MBasicEntity {
         this.numberOfVotes = numberOfVotes;
     }
 
-    public List<MAlbum> getmAlbums() {
-        return mAlbums;
-    }
-
-    public void setmAlbums(List<MAlbum> mAlbums) {
-        this.mAlbums = mAlbums;
-    }
-
     public String getCover() {
         return cover;
     }
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public List<MUserSingiel> getmUserSingiels() {
+        return mUserSingiels;
+    }
+
+    public void setmUserSingiels(List<MUserSingiel> mUserSingiels) {
+        this.mUserSingiels = mUserSingiels;
+    }
+
+    public List<MSingielSong> getmSingielSongs() {
+        return mSingielSongs;
+    }
+
+    public void setmSingielSongs(List<MSingielSong> mSingielSongs) {
+        this.mSingielSongs = mSingielSongs;
     }
     
     

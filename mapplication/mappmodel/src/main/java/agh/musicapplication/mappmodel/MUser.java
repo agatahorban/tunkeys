@@ -6,10 +6,15 @@
 package agh.musicapplication.mappmodel;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -51,11 +56,32 @@ public class MUser extends MBasicEntity {
     @Column
     private String description;
     
+    @Column
+    private String avatar;
+    
     @OneToMany(mappedBy = "user")
     private List<MUserReview> mUserReviews;
     
     @OneToMany(mappedBy = "user")
     private List<MUserBand> mUserBands;
+    
+    @OneToMany(mappedBy = "user")
+    private List<MUserAlbum> mUserAlbums;
+    
+    @OneToMany(mappedBy = "user")
+    private List<MUserSong> mUserSongs;
+    
+    @OneToMany(mappedBy = "user")
+    private List<MUserSingiel> mUserSingiels;
+    
+    @ManyToMany
+    @JoinTable(
+            name = "m_user_permission",
+            joinColumns = {
+                @JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "permission_id", referencedColumnName = "id")})
+    private Collection<MPermission> roles = new HashSet<>();
 
     public MUser() {
         mUserReviews = new ArrayList<>();
@@ -134,5 +160,53 @@ public class MUser extends MBasicEntity {
 
     public void setmUserReviews(List<MUserReview> mUserReviews) {
         this.mUserReviews = mUserReviews;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public List<MUserBand> getmUserBands() {
+        return mUserBands;
+    }
+
+    public void setmUserBands(List<MUserBand> mUserBands) {
+        this.mUserBands = mUserBands;
+    }
+
+    public List<MUserAlbum> getmUserAlbums() {
+        return mUserAlbums;
+    }
+
+    public void setmUserAlbums(List<MUserAlbum> mUserAlbums) {
+        this.mUserAlbums = mUserAlbums;
+    }
+
+    public List<MUserSong> getmUserSongs() {
+        return mUserSongs;
+    }
+
+    public void setmUserSongs(List<MUserSong> mUserSongs) {
+        this.mUserSongs = mUserSongs;
+    }
+
+    public List<MUserSingiel> getmUserSingiels() {
+        return mUserSingiels;
+    }
+
+    public void setmUserSingiels(List<MUserSingiel> mUserSingiels) {
+        this.mUserSingiels = mUserSingiels;
+    }
+
+    public Collection<MPermission> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<MPermission> roles) {
+        this.roles = roles;
     }
 }

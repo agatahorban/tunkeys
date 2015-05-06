@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package agh.musicapplication.mappmodel;
 
 import javax.persistence.Column;
@@ -12,23 +13,20 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Agatka
+ * @author ag
  */
 @Entity
-@Table(name = "m_user_band")
-public class MUserBand extends MBasicEntity {
+@Table(name = "m_user_album")
+public class MUserAlbum extends MBasicEntity {
     
     @Column
     private int grade;
-
+    
     @ManyToOne
     private MUser user;
     
     @ManyToOne
-    private MBand band;
-
-    public MUserBand() {
-    }
+    private MAlbum album;
 
     public int getGrade() {
         return grade;
@@ -46,12 +44,12 @@ public class MUserBand extends MBasicEntity {
         this.user = user;
     }
 
-    public MBand getBand() {
-        return band;
+    public MAlbum getAlbum() {
+        return album;
     }
 
-    public void setBand(MBand band) {
-        this.band = band;
+    public void setAlbum(MAlbum album) {
+        this.album = album;
     }
     
     
