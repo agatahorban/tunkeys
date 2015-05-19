@@ -6,9 +6,12 @@
 
 package agh.musicapplication.mappmodel;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +30,9 @@ public class MSong extends MBasicEntity {
     @Column(name = "number_of_votes")
     private int numberOfVotes;
     
+    @Enumerated(EnumType.STRING)
+    private MGenre genre;
+    
     @OneToMany(mappedBy = "song")
     private List<MUserSong> mUserSongs;
     @OneToMany(mappedBy = "song")
@@ -35,6 +41,9 @@ public class MSong extends MBasicEntity {
     private List<MAlbumSong> mAlbumSongs;
 
     public MSong() {
+        mUserSongs = new ArrayList<>();
+        mSingielSongs = new ArrayList<>();
+        mAlbumSongs = new ArrayList<>();
     }
 
     public String getName() {
@@ -83,6 +92,14 @@ public class MSong extends MBasicEntity {
 
     public void setmAlbumSongs(List<MAlbumSong> mAlbumSongs) {
         this.mAlbumSongs = mAlbumSongs;
+    }
+
+    public MGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(MGenre genre) {
+        this.genre = genre;
     }
     
     

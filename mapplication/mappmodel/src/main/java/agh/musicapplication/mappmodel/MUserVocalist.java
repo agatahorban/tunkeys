@@ -15,19 +15,18 @@ import javax.persistence.Table;
  *
  * @author ag
  */
+
 @Entity
-@Table(name = "m_user_singiel")
-public class MUserSingiel extends MBasicEntity {
-    
+@Table(name = "m_user_vocalist")
+public class MUserVocalist extends MBasicEntity {
     @Column
     private int grade;
+
     @ManyToOne
     private MUser user;
+    
     @ManyToOne
-    private MSingiel singiel;
-
-    public MUserSingiel() {
-    }
+    private MVocalist vocalist;
 
     public int getGrade() {
         return grade;
@@ -45,12 +44,12 @@ public class MUserSingiel extends MBasicEntity {
         this.user = user;
     }
 
-    public MSingiel getSingiel() {
-        return singiel;
+    public MVocalist getVocalist() {
+        return vocalist;
     }
 
-    public void setSingiel(MSingiel singiel) {
-        this.singiel = singiel;
+    public void setVocalist(MVocalist vocalist) {
+        this.vocalist = vocalist;
     }
     
     

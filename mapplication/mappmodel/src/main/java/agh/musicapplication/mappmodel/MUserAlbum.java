@@ -51,4 +51,5 @@ public class MUserAlbum extends MBasicEntity {
         this.album = album;
     }
 
+    
 }

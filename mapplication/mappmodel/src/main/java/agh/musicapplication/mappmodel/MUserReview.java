@@ -53,4 +53,6 @@ public class MUserReview extends MBasicEntity {
     public void setReview(MReview review) {
         this.review = review;
     }
+    
+    
 }

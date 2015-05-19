@@ -5,6 +5,7 @@
  */
 package agh.musicapplication.mappmodel;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +32,11 @@ public class MSingiel extends MBasicEntity {
     private List<MUserSingiel> mUserSingiels;
     @OneToMany(mappedBy = "singiel")
     private List<MSingielSong> mSingielSongs;
+    
+    public MSingiel(){
+        mSingielSongs = new ArrayList<>();
+        mUserSingiels = new ArrayList<>();
+    }
 
     public String getName() {
         return name;
@@ -80,4 +86,5 @@ public class MSingiel extends MBasicEntity {
         this.mSingielSongs = mSingielSongs;
     }
 
+    
 }

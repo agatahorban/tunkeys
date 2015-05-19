@@ -20,6 +20,7 @@ public class MAlbumSong extends MBasicEntity {
     
     @ManyToOne
     private MAlbum album;
+    
     @ManyToOne
     private MSong song;
 

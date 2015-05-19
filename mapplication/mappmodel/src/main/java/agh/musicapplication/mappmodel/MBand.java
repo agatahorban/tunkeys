@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,7 +31,7 @@ public class MBand extends MBasicEntity {
     @Column
     private String name;
 
-    @Column
+    @Column(length = 2000)
     private String description;
 
     @Column
@@ -40,6 +42,11 @@ public class MBand extends MBasicEntity {
 
     @Column(name = "number_of_votes")
     private int numberOfVotes;
+    
+    @Enumerated(EnumType.STRING)
+    private MGenre genre;
+
+    
 
     public MBand() {
         mUserBands = new ArrayList<>();
@@ -100,6 +107,14 @@ public class MBand extends MBasicEntity {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public MGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(MGenre genre) {
+        this.genre = genre;
     }
     
     

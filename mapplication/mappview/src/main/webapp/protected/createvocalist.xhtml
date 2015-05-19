@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <h1>Create new band</h1>
+
+            <h:form id="createv" >
+
+
+
+                <h:outputLabel value="Name" 
+                               />
+                <h:inputText  value="#{createvocalist.vocalist.name}" required="true" />
+
+                <h:outputLabel value="Surname" 
+                               />
+                <h:inputText  value="#{createvocalist.vocalist.surname}" required="true" />
+                <h:outputLabel value="Artistic name" 
+                               />
+                <h:inputText  value="#{createvocalist.vocalist.artisticName}" required="true" />
+                <h:commandButton value="Add band" 
+                                 action="#{createvocalist.addVocalist()}"/>
+
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

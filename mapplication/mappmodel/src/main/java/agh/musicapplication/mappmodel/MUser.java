@@ -53,7 +53,7 @@ public class MUser extends MBasicEntity {
     @Temporal(TemporalType.DATE)
     private Date age;
     
-    @Column
+    @Column(length = 2000)
     private String description;
     
     @Column
@@ -73,6 +73,9 @@ public class MUser extends MBasicEntity {
     
     @OneToMany(mappedBy = "user")
     private List<MUserSingiel> mUserSingiels;
+    
+    @OneToMany(mappedBy = "user")
+    private List<MUserVocalist> mUserVocalists;
     
     @ManyToMany
     @JoinTable(
@@ -104,6 +107,7 @@ public class MUser extends MBasicEntity {
         mUserAlbums = new ArrayList<>();
         mUserSongs = new ArrayList<>();
         mUserSingiels = new ArrayList<>();
+        mUserVocalists = new ArrayList<>();
         
     }
 
@@ -218,4 +222,14 @@ public class MUser extends MBasicEntity {
     public void setRoles(Collection<MPermission> roles) {
         this.roles = roles;
     }
+
+    public List<MUserVocalist> getmUserVocalists() {
+        return mUserVocalists;
+    }
+
+    public void setmUserVocalists(List<MUserVocalist> mUserVocalists) {
+        this.mUserVocalists = mUserVocalists;
+    }
+    
+    
 }

@@ -25,8 +25,10 @@ public class MReview extends MBasicEntity {
 
     @Column
     private String name;
-    @Column
+    
+    @Column(length = 5000)
     private String descripton;
+    
     @Column
     private double grade;
 
@@ -77,4 +79,5 @@ public class MReview extends MBasicEntity {
         this.numberOfVotes = numberOfVotes;
     }
 
+    
 }

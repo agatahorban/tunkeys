@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class MAlbumRepository extends AbstractCrudRepository<MAlbum> implements Serializable,MAlbumRepositoryInterface {
-
+        
     @Override
     public MAlbum findAlbumByName(String album) {
         Query query = getSession().createQuery("from MAlbum where name = :album");
