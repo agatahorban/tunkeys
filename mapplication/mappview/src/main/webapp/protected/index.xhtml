@@ -9,14 +9,42 @@
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-            <h1>JSF 2.0 + Spring Example</h1>
+            <div class="hellotext">Hello Agata</div>
+            <div id="tenbands" class="normaltext">Ten bands you've rated lately:</div>
+            <center>
+                <table border="0" cellpadding="0">
+                    <div class="bandtext">Alice in Chains</div>
+                    <tr>
+                        <td width="100%"><img src="http://4.bp.blogspot.com/_KxguSWy5e5s/TFJL_iOVm3I/AAAAAAAAKdg/2hCERTjApog/s400/alice_in_chains_-_mtv_unplugged_-_front.jpg" width="400" height="264" name="photoslider"/></td>
+                    </tr>
+                    <tr>
+                        <td width="100%"><form method="POST" name="rotater">
+                                <div align="center"><center><p></p><p></p>
+                                        <p><input class="btn" type="button" value="Back" name="B2"
+                                                  onClick="backward()"></input>
+                                            <input class="btn" type="button" value="Next" name="B1"
+                                                   onClick="forward()"></input><br />
+                                        </p>
+                                    </center></div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+            <div id="tenbands" class="hellotext">Your statistics:</div>
+            <div class="normaltext">
+                <center><table id="statisticstable">
+                        
+                        <tr><td>Your rank:</td><td> REVIEWER</td></tr>
 
-
-            <h:form>
-               Hello
-
-
-            </h:form>
+                        <tr><td>Bands rated by you:</td><td> 10</td></tr>
+                        <tr><td>Vocalists rated by you:</td><td> 10</td></tr>
+                        <tr><td>Reviews written by you:</td><td>10</td></tr>
+                        <tr><td>Average mark:</td><td>3.2</td></tr>
+                        <tr><td>Your reviews mark: </td><td>4.5</td></tr>
+                    </table></center>
+            </div>
+            <div id="tenbands" class="hellotext">Check this out, if you wish.</div>
         </ui:define>
     </ui:composition>
 

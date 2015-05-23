@@ -11,8 +11,8 @@ html, body {
     background-color: #3D3D3D;
 
     color: #968AA4;	
-    font-family: tahoma;
-    font-size: 14px;
+    font-family: sans-serif;
+    font-size: 16px;
     letter-spacing: 0pt;
     margin: 0;
     padding: 0;
@@ -92,9 +92,9 @@ h2 {
 }
 
 #av{
-    position: relative;
-    left: 450px;
-    top: -10px;
+    position: absolute;
+    right: 200px;
+    top: 6px;
     text-align: justify;
     padding: 5px;
     font: 18px arial;
@@ -102,9 +102,12 @@ h2 {
 }
 
 #wysun{
-    position: relative;
-    left: 455px;
-    top: -20px;
+    /*    position: relative;
+        left: 455px;
+        top: -20px;*/
+    position: absolute;
+    right: 50px;
+    top: 30px;
     text-align: justify;
     padding: 5px;
     font: 18px arial;
@@ -122,9 +125,12 @@ h2 {
 }
 
 #b4 {
-    position: relative;
-    left: 455px;
-    top: -30px;
+    /*    position: relative;
+        left: 455px;
+        top: -30px;*/
+    position: absolute;
+    right: 100px;
+    top: 22px;
     text-align: justify;
     padding: 5px;
     font: 18px arial;
@@ -144,10 +150,13 @@ hr{
 
 
 #loggingdiv{
-    width: 50%;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    width: 30%;
     margin: 0 auto;
     margin-top: 10%;
-/*    height: 200px;*/
+    /*    height: 200px;*/
 
     border: 1px rgb(89,89,89) solid;
 
@@ -168,13 +177,100 @@ hr{
     text-align: center;
 
     line-height: 1.75em;
-    
+
     padding-top: 10px;
     padding-bottom: 10px;
+    border: 1px rgb(89,89,89) solid;
+
+    -moz-box-shadow:  0px 0px 10px 2px rgb(150, 148, 148);
+    -webkit-box-shadow:  0px 0px 10px 2px rgb(150, 148, 148);
+    box-shadow:  0px 0px 10px 2px rgb(150, 148, 148);
+
+
 }
 
+.css-input { 
+    font-size:16px; 
+    border-color:#cccccc; 
+    border-style:solid; padding:6px;
+    border-width:3px; 
+    border-radius:15px;
+    background-color:#ffffff;
+    margin: 5px;
+} 
+
+.css-input:focus 
+{ outline:none;
+} 
 .centeredtable{
     margin-left:auto; 
     margin-right:auto;
     padding: 5px;
+}
+
+.btn {
+    background: #b1afcc;
+    background-image: -webkit-linear-gradient(top, #b1afcc, #a162ba);
+    background-image: -moz-linear-gradient(top, #b1afcc, #a162ba);
+    background-image: -ms-linear-gradient(top, #b1afcc, #a162ba);
+    background-image: -o-linear-gradient(top, #b1afcc, #a162ba);
+    background-image: linear-gradient(to bottom, #b1afcc, #a162ba);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.btn:hover {
+    background: #9e9bcc;
+    background-image: -webkit-linear-gradient(top, #9e9bcc, #9c55ba);
+    background-image: -moz-linear-gradient(top, #9e9bcc, #9c55ba);
+    background-image: -ms-linear-gradient(top, #9e9bcc, #9c55ba);
+    background-image: -o-linear-gradient(top, #9e9bcc, #9c55ba);
+    background-image: linear-gradient(to bottom, #9e9bcc, #9c55ba);
+    text-decoration: none;
+    margin: 10px;
+}
+.bandtext 
+{
+    font-weight:normal;color:#A31310;letter-spacing:1pt;word-spacing:2pt;font-size:20px;text-align:left;line-height:1;text-align:center;margin:10px;
+}
+
+.hellotext
+{
+    text-shadow:1px 0px 1px rgba(138,138,138,0.8);font-weight:normal;color:#595959;letter-spacing:1pt;word-spacing:2pt;font-size:30px;text-align:left;font-family:sans-serif; line-height:1;
+    text-align: center; margin: 20px;
+}
+
+.normaltext{
+    font-weight:normal;color:#474747;letter-spacing:1pt;word-spacing:2pt;font-size:16px;text-align:left;font-family:sans-serif;line-height:1;
+}
+
+#tenbands{
+    margin: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#statisticstable{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=55)";
+    filter: alpha(opacity=55);
+    -moz-opacity: 0.55;
+    -khtml-opacity: 0.55;
+    opacity: 0.55;
+
+    background: rgb(255,255,255);
+    
+    border: 1px rgb(89,89,89) solid;
+    padding: 20px;
+
+}
+
+tr{
+     border: 1px rgb(89,89,89) solid;
 }
