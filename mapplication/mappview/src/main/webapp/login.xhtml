@@ -8,26 +8,29 @@
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <h:outputStylesheet library="css" name="newcss.css"/>
     </h:head>
     <h:body>
-        <div>
+        <div id="loggingdiv" >
             <h:form id="login" prependId="false"
                     onsubmit="document.#{p:component('login')}.action = '#{request.contextPath}/j_spring_security_check';">
 
-                
-                   
-                        <h:outputLabel value="Login" 
-                                       for="j_username"/>
-                        <h:inputText id="j_username" required="true" />
-
-                        <h:outputLabel value="Password" 
-                                       for="j_password"/>
-                        <h:inputSecret id="j_password" required="true"/>
-                    
-
-                    <h:commandButton value="Log in" 
-                                     type="submit"/>
-                
+                <img class="centeredtable" src ="#{resource['img/monkey400_1.png']}" />
+                <table class="centeredtable">
+                    <tr>   
+                        <td>
+                            <h:outputLabel value="Login" 
+                                           for="j_username"/> </td>
+                        <td> <h:inputText id="j_username" required="true" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel value="Password" 
+                                           for="j_password"/></td>
+                        <td> <h:inputSecret id="j_password" required="true"/></td>
+                    </tr>
+                </table>  
+                <h:commandButton value="Log in" 
+                                 type="submit"/>
             </h:form>
         </div>
     </h:body>
