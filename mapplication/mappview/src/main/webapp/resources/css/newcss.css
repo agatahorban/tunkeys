@@ -274,3 +274,13 @@ hr{
 tr{
      border: 1px rgb(89,89,89) solid;
 }
+
+#bandinfo{
+    margin: 20px;
+}
+
+.stardiv{
+    right: 20px;
+    text-align: right;
+    margin-right: 20px;
+}

@@ -11,8 +11,16 @@ and open the template in the editor.
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-            <h1>#{band.currentBand.name}</h1>
-            <div>#{band.currentBand.description}</div>
+            <div class="bandtext">#{band.currentBand.name}</div>
+            <center><div><img width="400px" src="#{resource['img/The_beatles_history.jpg']}"></img></div></center>
+            <div class="stardiv">
+                <img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img>
+                <img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img>
+                <img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img>
+                <img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img>
+                <img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img>
+            </div>
+            <div id="bandinfo" class="normaltext">#{band.currentBand.description}</div>
 
         </ui:define>
     </ui:composition>

@@ -51,3 +51,64 @@ function type()
 {
     alert("This textbox will only display default comments");
 }
+
+
+function changeStar(x) {
+    x.src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+}
+
+function changeStarToNormal(x) {
+    x.src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+}
+
+function changeTwoStars(x) {
+    x.src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+}
+
+function changeTwoStarsToNormal(x) {
+    x.src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+}
+
+function changeThreeStars(x) {
+    x.src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+}
+
+function changeThreeStarsToNormal(x) {
+    x.src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+}
+
+function changeFourStars(x) {
+    x.src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+}
+
+function changeFourStarsToNormal(x) {
+    x.src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+}
+
+function changeFiveStars(x) {
+    x.src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+    document.getElementById("star4").src="/mappview/javax.faces.resource/img/star2_small.png.xhtml";
+}
+
+function changeFiveStarsToNormal(x) {
+    x.src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+    document.getElementById("star4").src="/mappview/javax.faces.resource/img/star1_small.png.xhtml";
+}
