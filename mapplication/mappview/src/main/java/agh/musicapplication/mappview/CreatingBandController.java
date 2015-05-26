@@ -42,9 +42,9 @@ public class CreatingBandController {
     public String addBand() {
         newBand.setGenre(getGenre(selectedGenre));
         try {
-            String filepath = "C:\\data\\" + getFilename(file1);
+            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(file1);
             file1.write(filepath);
-            newBand.setCover(filepath);
+            newBand.setCover("img/"+getFilename(file1));
         } catch (IOException ex) {
             Logger.getLogger(DemoBean.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -73,6 +73,8 @@ public class CreatingBandController {
                 return MGenre.METAL;
             case "Pop":
                 return MGenre.POP;
+            case "Rock":
+                return MGenre.ROCK;
         }
         return null;
     }

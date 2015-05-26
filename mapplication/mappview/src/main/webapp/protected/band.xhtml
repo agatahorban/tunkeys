@@ -15,7 +15,7 @@ and open the template in the editor.
             <h:form>
                 <div class="bandtext" id="blaa">#{band.currentBand.name}</div>
                 <div id="bandid" style="display: none;">#{band.currentBand.id}</div>
-                <center><div><img width="400px" src="#{resource['img/The_beatles_history.jpg']}"></img></div></center>
+                <center><div><img width="400px" src="#{resource[band.currentBand.cover]}"></img></div></center>
                 <script>
                     var value = document.getElementById("bandid").innerHTML;
                     document.cookie="bnd="+value+";";
