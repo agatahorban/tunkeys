@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Tomahawk file upload demo</title>
+    </h:head>
+    <h:body>
+        <h:form enctype="multipart/form-data">
+            <h:inputFile value="#{demobean.file1}"/>
+            <h:commandButton value="submit" action="#{demobean.upload()}" />
+            <h:messages />
+            <h:selectOneMenu value="#{demobean.favCoffee1}">
+                <f:selectItem itemValue="Cream Latte" itemLabel="Coffee3 - Cream Latte" />
+                <f:selectItem itemValue="Extreme Mocha" itemLabel="Coffee3 - Extreme Mocha" />
+                <f:selectItem itemValue="Buena Vista" itemLabel="Coffee3 - Buena Vista" />
+            </h:selectOneMenu>
+        </h:form>
+    </h:body> 
+</html>

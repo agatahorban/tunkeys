@@ -7,30 +7,46 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-      <ui:composition template="/template.xhtml">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
             <h1>Create new band</h1>
 
- <h:form id="createb" >
+            <h:form id="createb" enctype="multipart/form-data" >
 
-                
-                   
-                        <h:outputLabel value="Name" 
-                                       />
-                        <h:inputText  value="#{createband.newBand.name}" required="true" />
 
-                        <h:outputLabel value="Description" 
-                                       />
-                        <h:inputText  value="#{createband.newBand.description}" required="true" />
-                    
+                <table class="centeredtable">
+                    <tr><td><h:outputLabel value="Name" 
+                                           /></td>
+                        <td> <h:inputText  value="#{createband.newBand.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
 
-                    <h:commandButton value="Add band" 
-                                      action="#{createband.addBand()}"/>
-                
+                    <tr><td><h:outputLabel value="Description" 
+                                           /></td>
+                        <td><h:inputTextarea cols="40" rows="10" value="#{createband.newBand.description}" class="css-input"/></td>
+
+                    </tr>
+                    <tr><td><h:outputLabel value="Genre" 
+                                           /></td>
+                        <td> <h:selectOneMenu value="#{createband.selectedGenre}" class="css-input" style="width: 345px;">
+                                <f:selectItem itemValue="Classic" itemLabel="Classic" />
+                                <f:selectItem itemValue="Country" itemLabel="Country" />
+                                <f:selectItem itemValue="Hip-hop" itemLabel="Hip-hop" />
+                                <f:selectItem itemValue="Metal" itemLabel="Metal" />
+                                <f:selectItem itemValue="Rock" itemLabel="Rock" />
+                            </h:selectOneMenu></td>
+
+                    </tr>
+                    <tr>
+                        <td>Band photo</td>
+                        <td><h:inputFile value="#{createband.file1}" style="margin-left: 8px;"/></td>
+                    </tr>
+                </table>
+                <center>   <h:commandButton value="Add band"  class="btn"
+                                            action="#{createband.addBand()}" /> </center>
             </h:form>
-           
+
         </ui:define>
     </ui:composition>
 </html>
