@@ -265,14 +265,14 @@ hr{
     opacity: 0.55;
 
     background: rgb(255,255,255);
-    
+
     border: 1px rgb(89,89,89) solid;
     padding: 20px;
 
 }
 
 tr{
-     border: 1px rgb(89,89,89) solid;
+    border: 1px rgb(89,89,89) solid;
 }
 
 #bandinfo{
@@ -283,4 +283,25 @@ tr{
     right: 20px;
     text-align: right;
     margin-right: 20px;
+}
+
+.ratesdiv{
+    right: 30px;
+    text-align: right;
+    margin-right: 30px;
+    color: #4950CF;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow:1px 1px 0 rgba(255,255,255,0.6);
+    /*    opacity: 0.8;*/
+}
+
+.genresdiv {
+    left: 30px;
+    text-align: left;
+    margin-left: 30px;
+    color: #5F1A87;
+    font-size: 22px;
+    text-shadow:1px 1px 0 rgba(255,255,255,0.6);
+  
 }

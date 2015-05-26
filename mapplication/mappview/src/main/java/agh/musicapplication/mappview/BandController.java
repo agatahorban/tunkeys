@@ -8,6 +8,7 @@ package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappmodel.MBand;
+import agh.musicapplication.mappservices.interfaces.RoundingServiceInterface;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -25,8 +26,12 @@ public class BandController {
     @Inject
     MBandRepositoryInterface bri;
     
+    @Inject
+    RoundingServiceInterface rsi;
+    
     private MBand currentBand;
     private String bandName;
+   
 
     public BandController() {
     }
@@ -58,7 +63,9 @@ public class BandController {
         return "/protected/createband.xhtml";
     }
 
- 
+    public double getBandMark(){
+        return rsi.round(currentBand.getGrade(), 2);
+    }
     
     
 }

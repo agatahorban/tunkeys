@@ -28,6 +28,15 @@ and open the template in the editor.
                     <h:commandLink action="#{rate.rateBand(4,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img></h:commandLink>
                      <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
                 </div>
+                 <div class="ratesdiv">
+                     Average mark: #{band.bandMark}
+                </div>
+                <div class="ratesdiv">
+                    Rated   #{band.currentBand.numberOfVotes} times
+                </div>
+                <div class="genresdiv">
+                    Genre:   #{band.currentBand.genre}
+                </div>
                 <div id="bandinfo" class="normaltext">#{band.currentBand.description}</div>
             </h:form>
 
