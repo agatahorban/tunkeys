@@ -18,14 +18,37 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class GradeCountingService {
 
-    public Map<Integer, Double> countNewGrade(int oldCount, double oldGrade, int newGrade) {
-        Map<Integer, Double> map = new HashMap<>();
+    public GradeHolder countNewGrade(int oldCount, double oldGrade, int newGrade) {
+        GradeHolder holder = null;
+        int c;
+        double g;
         if (oldCount == 0) {
-            map.put(1, (double) newGrade);
+            holder = new GradeHolder(1, (double) newGrade);
         } else {
             double newValue = (oldGrade * oldCount + 1.0 * newGrade) / (double) (oldCount + 1.0);
-            map.put(oldCount + 1, newValue);
+            holder = new GradeHolder(oldCount+1, newValue);
         }
-        return map;
+        return holder;
+    }
+    
+    public class GradeHolder{
+        private int count;
+        private double grade;
+
+        public GradeHolder(int count, double grade) {
+            this.count = count;
+            this.grade = grade;
+        }
+
+        
+        public int getCount() {
+            return count;
+        }
+
+        public double getGrade() {
+            return grade;
+        }
+        
+        
     }
 }

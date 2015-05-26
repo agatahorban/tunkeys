@@ -5,8 +5,15 @@
  */
 package agh.musicapplication.mappview;
 
+import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
+import agh.musicapplication.mappmodel.MUser;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -18,5 +25,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Scope("request")
 @Transactional
 public class UserController {
+    private UserDetails user = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    private MUser muser;
     
+    @Inject
+    MUserRepositoryInterface uri;
+    
+    @PostConstruct
+    public void initalizeMUser(){
+        muser = uri.findUserByLogin(user.getUsername());
+    }
+    
+    public MUser getMuser() {
+        return muser;
+    }
 }

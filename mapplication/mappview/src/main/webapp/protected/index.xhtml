@@ -9,7 +9,7 @@
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-            <div class="hellotext">Hello Agata</div>
+            <div class="hellotext">Hello #{existinguser.muser.login}</div>
             <div id="tenbands" class="normaltext">Ten bands you've rated lately:</div>
             <center>
                 <table border="0" cellpadding="0">

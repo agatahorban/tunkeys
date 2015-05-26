@@ -7,20 +7,29 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-            <div class="bandtext">#{band.currentBand.name}</div>
-            <center><div><img width="400px" src="#{resource['img/The_beatles_history.jpg']}"></img></div></center>
-            <div class="stardiv">
-                <img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img>
-                <img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img>
-                <img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img>
-                <img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img>
-                <img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img>
-            </div>
-            <div id="bandinfo" class="normaltext">#{band.currentBand.description}</div>
+            <h:form>
+                <div class="bandtext" id="blaa">#{band.currentBand.name}</div>
+                <div id="bandid" style="display: none;">#{band.currentBand.id}</div>
+                <center><div><img width="400px" src="#{resource['img/The_beatles_history.jpg']}"></img></div></center>
+                <script>
+                    var value = document.getElementById("bandid").innerHTML;
+                    document.cookie="bnd="+value+";";
+                </script>
+                <div class="stardiv">
+
+                    <h:commandLink action="#{rate.rateBand(1,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img></h:commandLink>
+                    <h:commandLink action="#{rate.rateBand(2,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img></h:commandLink>
+                    <h:commandLink action="#{rate.rateBand(3,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img></h:commandLink>
+                    <h:commandLink action="#{rate.rateBand(4,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img></h:commandLink>
+                     <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
+                </div>
+                <div id="bandinfo" class="normaltext">#{band.currentBand.description}</div>
+            </h:form>
 
         </ui:define>
     </ui:composition>
