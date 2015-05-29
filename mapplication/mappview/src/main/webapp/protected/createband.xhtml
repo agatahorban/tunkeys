@@ -35,6 +35,7 @@ and open the template in the editor.
                                 <f:selectItem itemValue="Hip-hop" itemLabel="Hip-hop" />
                                 <f:selectItem itemValue="Metal" itemLabel="Metal" />
                                 <f:selectItem itemValue="Rock" itemLabel="Rock" />
+                                <f:selectItem itemValue="Pop" itemLabel="Rock" />
                             </h:selectOneMenu></td>
 
                     </tr>
@@ -42,6 +43,8 @@ and open the template in the editor.
                         <td>Band photo</td>
                         <td><h:inputFile value="#{createband.file1}" style="margin-left: 8px;"/></td>
                     </tr>
+                    <tr><td><h:outputLabel value="Amount of albums" 
+                                           /></td> <td><h:inputText  value="#{createband.howManyAlbums}" required="true" class="css-input" style="width: 325px;" /></td></tr>
                 </table>
                 <center>   <h:commandButton value="Add band"  class="btn"
                                             action="#{createband.addBand()}" /> </center>

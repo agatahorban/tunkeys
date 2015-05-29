@@ -8,6 +8,7 @@ package agh.musicapplication.mappview;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MGenre;
+import agh.musicapplication.mappview.cookies.CookieHelper;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +32,8 @@ public class CreatingBandController {
     private String selectedGenre;
 
     private Part file1;
+    
+    private String howManyAlbums;
 
     @Inject
     MBandRepositoryInterface bri;
@@ -50,6 +53,7 @@ public class CreatingBandController {
         } finally {
             bri.insert(newBand);
         }
+        CookieHelper.setCookie("howmanyalbums", howManyAlbums, 7200);
         return "bands";
     }
 
@@ -113,4 +117,13 @@ public class CreatingBandController {
         return null;
     }
 
+    public String getHowManyAlbums() {
+        return howManyAlbums;
+    }
+
+    public void setHowManyAlbums(String howManyAlbums) {
+        this.howManyAlbums = howManyAlbums;
+    }
+
+    
 }

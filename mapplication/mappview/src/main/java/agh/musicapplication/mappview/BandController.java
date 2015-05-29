@@ -31,7 +31,7 @@ public class BandController {
     
     private MBand currentBand;
     private String bandName;
-   
+    private int howMany;
 
     
     public BandController() {
@@ -66,6 +66,30 @@ public class BandController {
 
     public double getBandMark(){
         return rsi.round(currentBand.getGrade(), 2);
+    }
+
+    public MBandRepositoryInterface getBri() {
+        return bri;
+    }
+
+    public void setBri(MBandRepositoryInterface bri) {
+        this.bri = bri;
+    }
+
+    public RoundingServiceInterface getRsi() {
+        return rsi;
+    }
+
+    public void setRsi(RoundingServiceInterface rsi) {
+        this.rsi = rsi;
+    }
+
+    public int getHowMany() {
+        return howMany;
+    }
+
+    public void setHowMany(int howMany) {
+        this.howMany = howMany;
     }
     
     
