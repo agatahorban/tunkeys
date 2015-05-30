@@ -53,7 +53,7 @@ public class CreatingBandController {
         } finally {
             bri.insert(newBand);
         }
-        return "/protected/addalbums.xhtml?bandname="+newBand.getName()+"&howmany="+howManyAlbums;
+        return "/protected/addalbums.xhtml?faces-redirect=true&bandname="+newBand.getName()+"&howmany="+howManyAlbums;
     }
 
     public MBand getNewBand() {

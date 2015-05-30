@@ -43,9 +43,9 @@ public class AddAlbumsController {
     private List<MSong> songs;
     private String selectedGenre;
     private Part f1;
-    
+
     private String bandname;
-    
+
     private MSong song01;
     private MSong song02;
     private MSong song03;
@@ -84,20 +84,20 @@ public class AddAlbumsController {
 
     @PostConstruct
     public void init() {
+            String bandName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bandname");
+            currentBand = bri.findBandByName(bandName);
         if (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("howmany") != null) {
             amountOfAlbums = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("howmany"));
         } else {
             amountOfAlbums = 0;
-        }
-     
             album = new MAlbum();
             songs = new ArrayList<>();
             selectedGenre = "";
-     
+
             album = new MAlbum();
             songs = new ArrayList<>();
             selectedGenre = "";
-            
+
             song01 = new MSong();
             song02 = new MSong();
             song03 = new MSong();
@@ -118,7 +118,7 @@ public class AddAlbumsController {
             song18 = new MSong();
             song19 = new MSong();
             song20 = new MSong();
-            
+
             songs.add(song01);
             songs.add(song02);
             songs.add(song03);
@@ -139,16 +139,15 @@ public class AddAlbumsController {
             songs.add(song18);
             songs.add(song19);
             songs.add(song20);
-            
+
+        }
     }
-    
 
     public String addAlbums(Long bnd, int amount) {
-        Logger.getAnonymousLogger().log(Level.WARNING,"Wszedlem do add albums!!!!!!!!!!!!!");
+        Logger.getAnonymousLogger().log(Level.WARNING, "Wszedlem do add albums!!!!!!!!!!!!!");
         currentBand = bri.find(bnd);
-        Logger.getAnonymousLogger().log(Level.WARNING,"Album name" + currentBand.getName());
-        Logger.getAnonymousLogger().log(Level.WARNING,currentBand.getName())
-                ;
+        Logger.getAnonymousLogger().log(Level.WARNING, "Album name" + currentBand.getName());
+        Logger.getAnonymousLogger().log(Level.WARNING, currentBand.getName());
         album.setBand(currentBand);
         album.setGenre(getGenre(selectedGenre));
         try {
@@ -174,10 +173,10 @@ public class AddAlbumsController {
                 asri.insert(mAlbumSong);
             }
         }
-        if(amount>0){
-            return "/protected/addalbums.xhtml?faces-redirect=true&bandname="+currentBand.getName()+"&howmany="+amount;
+        if (amount > 0) {
+            return "/protected/addalbums.xhtml?faces-redirect=true&bandname=" + currentBand.getName() + "&howmany=" + amount;
         } else {
-        return "bands";
+            return "bands";
         }
     }
 
@@ -448,8 +447,5 @@ public class AddAlbumsController {
     public void setAsri(MAlbumSongRepositoryInterface asri) {
         this.asri = asri;
     }
-    
-    
 
-    
 }
