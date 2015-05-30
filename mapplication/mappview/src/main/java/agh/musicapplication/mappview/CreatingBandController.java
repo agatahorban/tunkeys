@@ -53,8 +53,7 @@ public class CreatingBandController {
         } finally {
             bri.insert(newBand);
         }
-        CookieHelper.setCookie("howmanyalbums", howManyAlbums, 7200);
-        return "bands";
+        return "/protected/addalbums.xhtml?bandname="+newBand.getName()+"&howmany="+howManyAlbums;
     }
 
     public MBand getNewBand() {

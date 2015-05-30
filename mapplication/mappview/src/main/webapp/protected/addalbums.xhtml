@@ -1,37 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-            <div id="album1" style="display: none;">div1</div>
-            <div id="album2" style="display: none;">div</div>
-            <div id="album3" style="display: none;">div</div>
-            <div id="album4" style="display: none;">div</div>
-            <div id="album5" style="display: none;">div</div>
-            <div id="album6" style="display: none;">div</div>
-            <div id="album7" style="display: none;">div</div>
-            <div id="album8" style="display: none;">div</div>
-            <div id="album9" style="display: none;">div</div>
-            <div id="album10" style="display: none;">div</div>
-            <div id="album11" style="display: none;">div</div>
-            <div id="album12" style="display: none;">div</div>
-            <div id="album13" style="display: none;">div</div>
-            <div id="album14" style="display: none;">div</div>
-            <div id="album15" style="display: none;">div</div>
-            <div id="album16" style="display: none;">div</div>
-            <div id="album17" style="display: none;">div</div>
-            <div id="album18" style="display: none;">div</div>
-            <div id="album19" style="display: none;">div</div>
-            <div id="album20" style="display: none;">div</div>
+            <div id="bandid" style="display: none;">#{addalbums.currentBand.id}</div>
+            <div id="num" style="display: none;">#{addalbums.amountOfAlbums}</div>
+            <script>
+                var value = document.getElementById("bandid").innerHTML;
+                document.cookie = "bend=" + value + ";";
+                var value2 = document.getElementById("num").innerHTML;
+                document.cookie = "howmany=" + value2 + ";";
+            </script>
+            <div id="album1" style="display: block;">
+                <h:form id="createb" enctype="multipart/form-data" >
 
+
+                    <table class="centeredtable">
+                        <tr><td><h:outputLabel value=" Album name" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.album.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+
+                        <tr><td><h:outputLabel value="Genre" 
+                                               /></td>
+                            <td> <h:selectOneMenu value="#{addalbums.selectedGenre}" class="css-input" style="width: 345px;">
+                                    <f:selectItem itemValue="Classic" itemLabel="Classic" />
+                                    <f:selectItem itemValue="Country" itemLabel="Country" />
+                                    <f:selectItem itemValue="Hip-hop" itemLabel="Hip-hop" />
+                                    <f:selectItem itemValue="Metal" itemLabel="Metal" />
+                                    <f:selectItem itemValue="Rock" itemLabel="Rock" />
+                                    <f:selectItem itemValue="Pop" itemLabel="Rock" />
+                                </h:selectOneMenu></td>
+
+                        </tr>
+                        <tr>
+                            <td>Album photo</td>
+                            <td><h:inputFile value="#{addalbums.f1}" style="margin-left: 8px;"/></td>
+                        </tr>
+                        <tr><td><h:outputLabel value="01. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song01.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="02. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song02.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="03. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song03.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="04. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song04.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="05. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song05.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="06. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song06.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="07. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song07.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="08. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song08.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="09. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song09.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="10. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song10.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="11. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song11.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="12. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song12.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="13. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song13.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="14. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song14.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="15. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song15.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="16. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song16.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="17. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song17.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="18. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song18.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="19. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song19.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="20. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addalbums.song20.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+
+                    </table>
+                    <center>   <h:commandButton value="Add band"  class="btn"
+                                                action="#{addalbums.addAlbums(facesContext.externalContext.requestCookieMap['bend'].value,facesContext.externalContext.requestCookieMap['howmany'].value)}" /> </center>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </html>
