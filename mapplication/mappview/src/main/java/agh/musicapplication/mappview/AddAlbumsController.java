@@ -14,7 +14,6 @@ import agh.musicapplication.mappmodel.MAlbumSong;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MGenre;
 import agh.musicapplication.mappmodel.MSong;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,8 +83,8 @@ public class AddAlbumsController {
 
     @PostConstruct
     public void init() {
-            String bandName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bandname");
-            currentBand = bri.findBandByName(bandName);
+        String bandName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bandname");
+        currentBand = bri.findBandByName(bandName);
         if (FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("howmany") != null) {
             amountOfAlbums = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("howmany"));
         } else {
@@ -160,24 +159,55 @@ public class AddAlbumsController {
             ari.insert(album);
         }
         for (MSong song : songs) {
-            if (song.getName().equals("")) {
+            if (!song.getName().equals("")) {
                 song.setGenre(getGenre(selectedGenre));
                 sri.insert(song);
             }
         }
         for (MSong song : songs) {
-            if (song.getName().equals("")) {
+            if (!song.getName().equals("")) {
                 MAlbumSong mAlbumSong = new MAlbumSong();
                 mAlbumSong.setAlbum(album);
                 mAlbumSong.setSong(song);
                 asri.insert(mAlbumSong);
             }
         }
-        if (amount > 0) {
-            return "/protected/addalbums.xhtml?faces-redirect=true&bandname=" + currentBand.getName() + "&howmany=" + amount;
-        } else {
-            return "bands";
+
+        return "bands";
+    }
+    
+     public String addNext(Long bnd, int amount) {
+        Logger.getAnonymousLogger().log(Level.WARNING, "Wszedlem do add albums!!!!!!!!!!!!!");
+        currentBand = bri.find(bnd);
+        Logger.getAnonymousLogger().log(Level.WARNING, "Album name" + currentBand.getName());
+        Logger.getAnonymousLogger().log(Level.WARNING, currentBand.getName());
+        album.setBand(currentBand);
+        album.setGenre(getGenre(selectedGenre));
+        try {
+            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(f1);
+            f1.write(filepath);
+            album.setCover("img/" + getFilename(f1));
+        } catch (IOException ex) {
+            Logger.getLogger(DemoBean.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ari.insert(album);
         }
+        for (MSong song : songs) {
+            if (!song.getName().equals("")) {
+                song.setGenre(getGenre(selectedGenre));
+                sri.insert(song);
+            }
+        }
+        for (MSong song : songs) {
+            if (!song.getName().equals("")) {
+                MAlbumSong mAlbumSong = new MAlbumSong();
+                mAlbumSong.setAlbum(album);
+                mAlbumSong.setSong(song);
+                asri.insert(mAlbumSong);
+            }
+        }
+
+        return "addalbums";
     }
 
     public MGenre getGenre(String g) {
