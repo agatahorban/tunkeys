@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package agh.musicapplication.mappmodel;
 
 import java.util.ArrayList;
@@ -19,29 +18,44 @@ import javax.persistence.Table;
  *
  * @author ag
  */
-
 @Entity
 @Table(name = "mvocalist")
-public class MVocalist extends MBasicEntity{
+public class MVocalist extends MBasicEntity {
+
     @Column
     private String name;
-    
+
     @Column
     private String surname;
-    
+
     @Column
     private String artisticName;
-    
+
+    @Column(length = 2000)
+    private String description;
+
+    @Column
+    private double grade;
+
+    @Column
+    private String cover;
+
+    @Column(name = "number_of_votes")
+    private int numberOfVotes;
+
     @OneToMany(mappedBy = "vocalist")
     private List<MUserVocalist> mUserVocalists;
     
+    @OneToMany(mappedBy = "vocalist")
+    private List<MAlbum> mAlbums;
+
     @Enumerated(EnumType.STRING)
     private MGenre genre;
 
     public MVocalist() {
         mUserVocalists = new ArrayList<>();
     }
-    
+
     public String getName() {
         return name;
     }
@@ -81,6 +95,47 @@ public class MVocalist extends MBasicEntity{
     public void setGenre(MGenre genre) {
         this.genre = genre;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
+    }
+
+    public List<MAlbum> getmAlbums() {
+        return mAlbums;
+    }
+
+    public void setmAlbums(List<MAlbum> mAlbums) {
+        this.mAlbums = mAlbums;
+    }
     
     
+
 }

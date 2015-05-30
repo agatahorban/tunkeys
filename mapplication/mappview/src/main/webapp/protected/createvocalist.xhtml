@@ -7,29 +7,56 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
             <h1>Create new band</h1>
 
-            <h:form id="createv" >
+            <h:form id="createv" enctype="multipart/form-data">
 
 
+                <table class="centeredtable">
+                    <tr>
+                        <td><h:outputLabel value="Name" 
+                                           /></td>
+                        <td><h:inputText  value="#{createvocalist.vocalist.name}"  class="css-input" required="false" style="width: 325px;" /></td>
+                    </tr>
+                    <tr>
+                        <td> <h:outputLabel value="Surname" 
+                                            /></td>
+                        <td><h:inputText  value="#{createvocalist.vocalist.surname}" class="css-input" required="false" style="width: 325px;" /></td>
+                    </tr>
+                    <tr>
+                        <td> <h:outputLabel value="Artistic name" 
+                                            /></td>
+                        <td> <h:inputText  value="#{createvocalist.vocalist.artisticName}" class="css-input" required="false"  style="width: 325px;"/></td>
+                    </tr>
+                    <tr><td><h:outputLabel value="Description" 
+                                           /></td>
+                        <td><h:inputTextarea cols="40" rows="10" value="#{createband.newBand.description}" class="css-input"/></td>
 
-                <h:outputLabel value="Name" 
-                               />
-                <h:inputText  value="#{createvocalist.vocalist.name}" required="true" />
+                    </tr>
+                    <tr><td><h:outputLabel value="Genre" 
+                                           /></td>
+                        <td> <h:selectOneMenu value="#{createvocalist.selectedGenre}" class="css-input" style="width: 345px;">
+                                <f:selectItem itemValue="Classic" itemLabel="Classic" />
+                                <f:selectItem itemValue="Country" itemLabel="Country" />
+                                <f:selectItem itemValue="Hip-hop" itemLabel="Hip-hop" />
+                                <f:selectItem itemValue="Metal" itemLabel="Metal" />
+                                <f:selectItem itemValue="Rock" itemLabel="Rock" />
+                                <f:selectItem itemValue="Pop" itemLabel="Pop" />
+                            </h:selectOneMenu></td>
 
-                <h:outputLabel value="Surname" 
-                               />
-                <h:inputText  value="#{createvocalist.vocalist.surname}" required="true" />
-                <h:outputLabel value="Artistic name" 
-                               />
-                <h:inputText  value="#{createvocalist.vocalist.artisticName}" required="true" />
-                <h:commandButton value="Add band" 
-                                 action="#{createvocalist.addVocalist()}"/>
-
+                    </tr>
+                    <tr>
+                        <td>Vocalist photo</td>
+                        <td><h:inputFile value="#{createvocalist.file1}" style="margin-left: 8px;"/></td>
+                    </tr>
+                </table>
+                <center><h:commandButton value="Add vocalist"   class="btn"
+                                         action="#{createvocalist.addVocalist()}"/></center>
             </h:form>
 
         </ui:define>

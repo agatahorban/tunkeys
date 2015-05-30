@@ -42,6 +42,9 @@ public class MAlbum extends MBasicEntity {
     @ManyToOne
     private MBand band;
     
+    @ManyToOne
+    private MVocalist vocalist;
+    
     @OneToMany(mappedBy = "album")
     private List<MUserAlbum> mUserAlbums;
     
@@ -116,5 +119,13 @@ public class MAlbum extends MBasicEntity {
     public void setGenre(MGenre genre) {
         this.genre = genre;
     }
-    
+
+    public MVocalist getVocalist() {
+        return vocalist;
+    }
+
+    public void setVocalist(MVocalist vocalist) {
+        this.vocalist = vocalist;
+    }
+
 }
