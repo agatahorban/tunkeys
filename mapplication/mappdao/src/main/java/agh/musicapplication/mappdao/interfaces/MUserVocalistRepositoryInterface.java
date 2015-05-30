@@ -7,12 +7,13 @@ package agh.musicapplication.mappdao.interfaces;
 
 import agh.musicapplication.mappdao.Crudable;
 import agh.musicapplication.mappmodel.MUser;
-import agh.musicapplication.mappmodel.MUserBand;
+import agh.musicapplication.mappmodel.MUserVocalist;
 
 /**
  *
  * @author Agata
  */
-public interface MUserBandRepositoryInterface extends Crudable<MUserBand> {
-    public Long getCountOfMUserBand(MUser user); 
+
+public interface MUserVocalistRepositoryInterface extends Crudable<MUserVocalist> {
+    public Long getCountOfMUserVocalist(MUser user);
 }

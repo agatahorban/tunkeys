@@ -5,9 +5,9 @@
  */
 package agh.musicapplication.mappdao;
 
-import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MUserReviewRepositoryInterface;
 import agh.musicapplication.mappmodel.MUser;
-import agh.musicapplication.mappmodel.MUserBand;
+import agh.musicapplication.mappmodel.MUserReview;
 import java.io.Serializable;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -19,14 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class MUserBandRepository extends AbstractCrudRepository<MUserBand> implements Serializable, MUserBandRepositoryInterface {
+public class MUserReviewRepository extends AbstractCrudRepository<MUserReview> implements Serializable, MUserReviewRepositoryInterface {
 
     @Override
-    public Long getCountOfMUserBand(MUser user) {
-        Query query = getSession().createQuery( "select count(*) from MUserBand m where m.user=:user");
+    public Long getCountOfMUserReview(MUser user) {
+        Query query = getSession().createQuery( "select count(*) from MUserReview m where m.user=:user");
         query.setParameter("user", user);
         Long count = (Long) query.uniqueResult();
         return count;
     }
-
+    
 }

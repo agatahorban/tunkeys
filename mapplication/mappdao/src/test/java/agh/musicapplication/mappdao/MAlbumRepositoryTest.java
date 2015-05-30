@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  *
- * @author Agatka
+ * @author Agata
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
