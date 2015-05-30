@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <div id="artid" style="display: none;">#{addvocalalbums.currentVocalist.id}</div>
+            <script>
+                var value = document.getElementById("artid").innerHTML;
+                document.cookie = "art=" + value + ";";
+            </script>
+            <div id="album1" style="display: block;">
+                <h:form id="createb" enctype="multipart/form-data" >
+
+
+                    <table class="centeredtable">
+                        <tr><td><h:outputLabel value=" Album name" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.album.name}" required="true" class="css-input" style="width: 325px;" /></td></tr>
+
+                        <tr><td><h:outputLabel value="Genre" 
+                                               /></td>
+                            <td> <h:selectOneMenu value="#{addvocalalbums.selectedGenre}" class="css-input" style="width: 345px;">
+                                    <f:selectItem itemValue="Classic" itemLabel="Classic" />
+                                    <f:selectItem itemValue="Country" itemLabel="Country" />
+                                    <f:selectItem itemValue="Hip-hop" itemLabel="Hip-hop" />
+                                    <f:selectItem itemValue="Metal" itemLabel="Metal" />
+                                    <f:selectItem itemValue="Rock" itemLabel="Rock" />
+                                    <f:selectItem itemValue="Pop" itemLabel="Rock" />
+                                </h:selectOneMenu></td>
+
+                        </tr>
+                        <tr>
+                            <td>Album photo</td>
+                            <td><h:inputFile value="#{addvocalalbums.f1}" style="margin-left: 8px;"/></td>
+                        </tr>
+                        <tr><td><h:outputLabel value="01. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song01.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="02. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song02.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="03. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song03.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="04. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song04.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="05. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song05.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="06. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song06.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="07. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song07.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="08. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song08.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="09. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song09.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="10. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song10.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="11. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song11.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="12. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song12.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="13. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song13.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="14. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song14.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="15. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song15.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="16. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song16.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="17. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song17.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="18. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song18.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="19. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song19.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+                        <tr><td><h:outputLabel value="20. Song" 
+                                               /></td>
+                            <td> <h:inputText  value="#{addvocalalbums.song20.name}" required="false" class="css-input" style="width: 325px;" /></td></tr>
+
+                    </table>
+                    <center>    <h:commandButton value="Add album and finish"  class="btn"
+                                                action="#{addvocalalbums.addAlbums(facesContext.externalContext.requestCookieMap['art'].value)}" />
+                        <h:commandButton value="Next album"  class="btn"
+                                                action="#{addalbums.addNext(facesContext.externalContext.requestCookieMap['bend'].value,facesContext.externalContext.requestCookieMap['howmany'].value)}" /> </center>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -82,7 +82,7 @@ public class CreatingVocalistController {
             vri.insert(vocalist);
         }
         
-        return "bands";
+        return "/protected/addvocalistalbums.xhtml?faces-redirect=true&vocalname="+vocalist.getName();
     }
 
     public MGenre getGenre(String g) {

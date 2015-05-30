@@ -14,5 +14,5 @@ import agh.musicapplication.mappmodel.MVocalist;
  * @author ag
  */
 public interface MVocalistRepositoryInterface  extends Crudable<MVocalist>{
-    
+     public MVocalist findVocalistByName(String vocalistArtisticName);
 }
