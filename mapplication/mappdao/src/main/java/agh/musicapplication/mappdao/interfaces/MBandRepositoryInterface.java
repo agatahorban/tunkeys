@@ -16,4 +16,5 @@ import agh.musicapplication.mappmodel.MUser;
  */
 public interface MBandRepositoryInterface extends Crudable<MBand>{
      public MBand findBandByName(String band);
+     
 }

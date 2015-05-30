@@ -125,4 +125,51 @@ public class MUserBandRepositoryTest {
        assertEquals(l,sut.getCountOfMUserBand(user));
     }
     
+    
+    @Test
+    public void shouldReturn3BecauseThereWas3RatesOf3(){
+       MUserBand userband = new MUserBand();
+       userband.setBand(band1);
+       userband.setUser(user);
+       userband.setGrade(3);
+       sut.insert(userband);
+       
+       MUserBand userband2 = new MUserBand();
+       userband2.setBand(band2);
+       userband2.setUser(user);
+       userband2.setGrade(3);
+       sut.insert(userband2);
+       
+       MUserBand userband3 = new MUserBand();
+       userband3.setBand(band3);
+       userband3.setUser(user);
+       userband3.setGrade(3);
+       sut.insert(userband3);
+       
+       assertEquals(3.0,sut.getAvgBandRankOfSomeUser(user),0.0001);
+    }
+    
+    
+    @Test
+    public void shouldReturn3Comma333BecauseThereWas3RatesOf3(){
+       MUserBand userband = new MUserBand();
+       userband.setBand(band1);
+       userband.setUser(user);
+       userband.setGrade(4);
+       sut.insert(userband);
+       
+       MUserBand userband2 = new MUserBand();
+       userband2.setBand(band2);
+       userband2.setUser(user);
+       userband2.setGrade(3);
+       sut.insert(userband2);
+       
+       MUserBand userband3 = new MUserBand();
+       userband3.setBand(band3);
+       userband3.setUser(user);
+       userband3.setGrade(3);
+       sut.insert(userband3);
+       
+       assertEquals(3.3333333333,sut.getAvgBandRankOfSomeUser(user),0.01);
+    }
 }

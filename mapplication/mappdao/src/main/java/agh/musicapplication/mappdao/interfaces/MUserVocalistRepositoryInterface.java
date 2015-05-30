@@ -16,4 +16,5 @@ import agh.musicapplication.mappmodel.MUserVocalist;
 
 public interface MUserVocalistRepositoryInterface extends Crudable<MUserVocalist> {
     public Long getCountOfMUserVocalist(MUser user);
+    public Double getAvgVocalistRankOfSomeUser(MUser user);
 }

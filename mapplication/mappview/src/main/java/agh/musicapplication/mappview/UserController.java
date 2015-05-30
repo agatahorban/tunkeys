@@ -7,6 +7,8 @@ package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
 import agh.musicapplication.mappmodel.MUser;
+import agh.musicapplication.mappservices.UserStatisticsService;
+import agh.musicapplication.mappservices.interfaces.UserStatisticsServiceInterface;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -31,12 +33,71 @@ public class UserController {
     @Inject
     MUserRepositoryInterface uri;
     
+    @Inject
+    UserStatisticsServiceInterface userStatisticsService;
+    
+    private long vocalRated, bandRated;
+    private double avgGrade;
+    
     @PostConstruct
     public void initalizeMUser(){
         muser = uri.findUserByLogin(user.getUsername());
+        vocalRated = userStatisticsService.getAmountOfVocalistsRatedByUser(muser);
+        bandRated = userStatisticsService.getAmountOfBandsRatedByUser(muser);
+        avgGrade = userStatisticsService.getAvgGradeOfSomeUser(muser);
     }
     
     public MUser getMuser() {
         return muser;
     }
+
+    public UserDetails getUser() {
+        return user;
+    }
+
+    public void setUser(UserDetails user) {
+        this.user = user;
+    }
+
+    public MUserRepositoryInterface getUri() {
+        return uri;
+    }
+
+    public void setUri(MUserRepositoryInterface uri) {
+        this.uri = uri;
+    }
+
+    public UserStatisticsServiceInterface getUserStatisticsService() {
+        return userStatisticsService;
+    }
+
+    public void setUserStatisticsService(UserStatisticsService UserStatisticsService) {
+        this.userStatisticsService = UserStatisticsService;
+    }
+
+    public long getVocalRated() {
+        return vocalRated;
+    }
+
+    public void setVocalRated(long vocalRated) {
+        this.vocalRated = vocalRated;
+    }
+
+    public long getBandRated() {
+        return bandRated;
+    }
+
+    public void setBandRated(long bandRated) {
+        this.bandRated = bandRated;
+    }
+
+    public double getAvgGrade() {
+        return avgGrade;
+    }
+
+    public void setAvgGrade(int avgGrade) {
+        this.avgGrade = avgGrade;
+    }
+    
+    
 }

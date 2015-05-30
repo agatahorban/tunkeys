@@ -29,4 +29,12 @@ public class MUserBandRepository extends AbstractCrudRepository<MUserBand> imple
         return count;
     }
 
+    @Override
+    public Double getAvgBandRankOfSomeUser(MUser user) {
+        Query query = getSession().createQuery( "select avg(m.grade) from MUserBand m where m.user=:user");
+        query.setParameter("user", user);
+        Double average = (Double) query.uniqueResult();
+        return average;
+    }
+
 }

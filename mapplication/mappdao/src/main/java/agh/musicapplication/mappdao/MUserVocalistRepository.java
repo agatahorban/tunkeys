@@ -29,4 +29,12 @@ public class MUserVocalistRepository extends AbstractCrudRepository<MUserVocalis
         return count;
     }
 
+    @Override
+    public Double getAvgVocalistRankOfSomeUser(MUser user) {
+        Query query = getSession().createQuery( "select avg(m.grade) from MUserVocalist m where m.user=:user");
+        query.setParameter("user", user);
+        Double average = (Double) query.uniqueResult();
+        return average;
+    }
+
 }

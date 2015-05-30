@@ -15,4 +15,5 @@ import agh.musicapplication.mappmodel.MUserBand;
  */
 public interface MUserBandRepositoryInterface extends Crudable<MUserBand> {
     public Long getCountOfMUserBand(MUser user); 
+    public Double getAvgBandRankOfSomeUser(MUser user);
 }
