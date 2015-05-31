@@ -5,6 +5,9 @@
  */
 package agh.musicapplication.mappview;
 
+import agh.musicapplication.mappdao.MUserBandRepository;
+import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.UserStatisticsService;
@@ -22,31 +25,37 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Agata
  */
-
 @Named("existinguser")
 @Scope("request")
 @Transactional
 public class UserController {
-    private UserDetails user = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+    private UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     private MUser muser;
-    
+
     @Inject
     MUserRepositoryInterface uri;
-    
+
+    @Inject
+    MUserBandRepositoryInterface ubri;
+
+    @Inject
+    MBandRepositoryInterface bri;
+
     @Inject
     UserStatisticsServiceInterface userStatisticsService;
-    
+
     private long vocalRated, bandRated;
     private double avgGrade;
-    
+
     @PostConstruct
-    public void initalizeMUser(){
+    public void initalizeMUser() {
         muser = uri.findUserByLogin(user.getUsername());
         vocalRated = userStatisticsService.getAmountOfVocalistsRatedByUser(muser);
         bandRated = userStatisticsService.getAmountOfBandsRatedByUser(muser);
         avgGrade = userStatisticsService.getAvgGradeOfSomeUser(muser);
     }
-    
+
     public MUser getMuser() {
         return muser;
     }
@@ -98,6 +107,23 @@ public class UserController {
     public void setAvgGrade(int avgGrade) {
         this.avgGrade = avgGrade;
     }
-    
-    
+
+    public boolean ifBandRated(long band) {
+        if (bri.find(band) == null) {
+            return false;
+        }
+        if (ubri.getCountOfMUserBand(muser, bri.find(band)).equals(0L)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int getRate(long band) {
+        if (bri.find(band) == null) {
+            return 0;
+        } else {
+            return ubri.getMUserBand(muser, bri.find(band)).getGrade();
+        }
+    }
 }

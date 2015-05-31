@@ -150,6 +150,8 @@ public class MUserBandRepositoryTest {
     }
     
     
+    
+    
     @Test
     public void shouldReturn3Comma333BecauseThereWas3RatesOf3(){
        MUserBand userband = new MUserBand();
@@ -171,5 +173,24 @@ public class MUserBandRepositoryTest {
        sut.insert(userband3);
        
        assertEquals(3.3333333333,sut.getAvgBandRankOfSomeUser(user),0.01);
+    }
+    
+    
+    @Test
+    public void shouldReturn1BecauseTheBandWasRated(){
+       MUserBand userband = new MUserBand();
+       userband.setBand(band1);
+       userband.setUser(user);
+       userband.setGrade(3);
+       sut.insert(userband);
+       
+       Long l = 1L;
+       assertEquals(l,sut.getCountOfMUserBand(user, band1));
+    }
+    
+    @Test
+    public void shouldReturn0BecauseTheBandWasntRated(){
+       Long l = 0L;
+       assertEquals(l,sut.getCountOfMUserBand(user, band1));
     }
 }

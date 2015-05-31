@@ -5,10 +5,13 @@
  */
 package agh.musicapplication.mappservices.interfaces;
 
+import agh.musicapplication.mappmodel.MBasicEntity;
+import java.util.List;
+
 /**
  *
  * @author Agata
  */
-public interface GradeCoutingServiceInterface {
-    
+public interface ListSplittingServiceInterface {
+    public List<List<MBasicEntity>> splitList(List<MBasicEntity> oldList, int number);
 }
