@@ -8,6 +8,7 @@ package agh.musicapplication.mappdao.interfaces;
 import agh.musicapplication.mappdao.Crudable;
 import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,5 @@ import agh.musicapplication.mappmodel.MBand;
  */
 public interface MAlbumRepositoryInterface extends Crudable<MAlbum> {
       public MAlbum findAlbumByName(String album);
+      public List<MAlbum> getAlbumsOfSomeBandSortedAlphabetically(MBand band);
 }

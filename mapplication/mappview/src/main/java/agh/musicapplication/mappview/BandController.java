@@ -6,9 +6,12 @@
 
 package agh.musicapplication.mappview;
 
+import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
+import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappservices.interfaces.RoundingServiceInterface;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -27,12 +30,16 @@ public class BandController {
     MBandRepositoryInterface bri;
     
     @Inject
+    MAlbumRepositoryInterface ari;
+    
+    @Inject
     RoundingServiceInterface rsi;
     
     private MBand currentBand;
     private String bandName;
     private int howMany;
 
+    private List<MAlbum> albumsSorted;
     
     public BandController() {
     }
@@ -41,6 +48,7 @@ public class BandController {
     public void init() {
         bandName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bandname");
         currentBand = bri.findBandByName(bandName);
+        albumsSorted = ari.getAlbumsOfSomeBandSortedAlphabetically(currentBand);
     }
 
     
@@ -66,6 +74,7 @@ public class BandController {
 
     public double getBandMark(){
         return rsi.round(currentBand.getGrade(), 2);
+
     }
 
     public MBandRepositoryInterface getBri() {
@@ -91,6 +100,12 @@ public class BandController {
     public void setHowMany(int howMany) {
         this.howMany = howMany;
     }
-    
-    
+
+    public List<MAlbum> getAlbumsSorted() {
+        return albumsSorted;
+    }
+
+    public void setAlbumsSorted(List<MAlbum> albumsSorted) {
+        this.albumsSorted = albumsSorted;
+    }    
 }

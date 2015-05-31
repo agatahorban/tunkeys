@@ -18,7 +18,7 @@ and open the template in the editor.
                 <center><div><img width="400px" src="#{resource[band.currentBand.cover]}"></img></div></center>
                 <script>
                     var value = document.getElementById("bandid").innerHTML;
-                    document.cookie="bnd="+value+";";
+                    document.cookie = "bnd=" + value + ";";
                 </script>
                 <div class="stardiv">
 
@@ -26,10 +26,10 @@ and open the template in the editor.
                     <h:commandLink action="#{rate.rateBand(2,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img></h:commandLink>
                     <h:commandLink action="#{rate.rateBand(3,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img></h:commandLink>
                     <h:commandLink action="#{rate.rateBand(4,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img></h:commandLink>
-                     <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
+                    <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
                 </div>
-                 <div class="ratesdiv">
-                     Average mark: #{band.bandMark}
+                <div class="ratesdiv">
+                    Average mark: #{band.bandMark}
                 </div>
                 <div class="ratesdiv">
                     Rated   #{band.currentBand.numberOfVotes} times
@@ -39,6 +39,16 @@ and open the template in the editor.
                 </div>
                 <div id="bandinfo" class="normaltext">#{band.currentBand.description}</div>
             </h:form>
+            <div class="genresdiv">Albums:</div>
+            <div class="normaltext"> <center> <table>
+
+                    <tr>
+                <ui:repeat var="a" value="#{band.albumsSorted}" varStatus="status">
+                    <td><img width="150px" src="#{resource[a.cover]}"></img> <br/><center>#{a.name}</center></td>
+                </ui:repeat>
+                    </tr>
+
+                    </table></center></div>
 
         </ui:define>
     </ui:composition>
