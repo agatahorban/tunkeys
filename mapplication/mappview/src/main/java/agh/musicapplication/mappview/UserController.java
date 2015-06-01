@@ -9,6 +9,7 @@ import agh.musicapplication.mappdao.MUserBandRepository;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
+import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.UserStatisticsService;
 import agh.musicapplication.mappservices.interfaces.UserStatisticsServiceInterface;
@@ -26,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Agata
  */
 @Named("existinguser")
-@Scope("request")
+@Scope("session")
 @Transactional
 public class UserController {
 
@@ -108,15 +109,12 @@ public class UserController {
         this.avgGrade = avgGrade;
     }
 
-    public boolean ifBandRated(long band) {
-        if (bri.find(band) == null) {
+    public boolean ifBandNotRated(String band) {
+        MBand b = bri.findBandByName(band);
+        if (b == null) {
             return false;
         }
-        if (ubri.getCountOfMUserBand(muser, bri.find(band)).equals(0L)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ubri.getCountOfMUserBand(muser, b).equals(0L);
     }
 
     public int getRate(long band) {

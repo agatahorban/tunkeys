@@ -9,6 +9,7 @@ import agh.musicapplication.mappmodel.MReview;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.ReviewService;
 import agh.musicapplication.mappservices.interfaces.ReviewServiceInterface;
+import agh.musicapplication.mappview.cookies.CookieHelper;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -43,6 +44,7 @@ public class RedirectController implements Serializable {
     }
     
     public String goToBand(){
+        CookieHelper.setCookie("bandname", bandName, 500000000);
         return "/protected/band.xhtml?faces-redirect=true&bandname="+bandName;
     }
 

@@ -11,6 +11,7 @@ import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappservices.interfaces.RoundingServiceInterface;
+import agh.musicapplication.mappview.cookies.CookieHelper;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -46,7 +47,7 @@ public class BandController {
     
     @PostConstruct
     public void init() {
-        bandName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("bandname");
+        bandName = CookieHelper.getCookie("bandname").getValue();
         currentBand = bri.findBandByName(bandName);
         albumsSorted = ari.getAlbumsOfSomeBandSortedAlphabetically(currentBand);
     }

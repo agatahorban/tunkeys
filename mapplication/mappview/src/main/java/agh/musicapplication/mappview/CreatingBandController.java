@@ -12,6 +12,7 @@ import agh.musicapplication.mappview.cookies.CookieHelper;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
@@ -34,13 +35,16 @@ public class CreatingBandController {
     private Part file1;
     
     private String howManyAlbums;
+    
 
     @Inject
     MBandRepositoryInterface bri;
-
+    
     public CreatingBandController() {
         newBand = new MBand();
     }
+
+ 
 
     public String addBand() {
         newBand.setGenre(getGenre(selectedGenre));

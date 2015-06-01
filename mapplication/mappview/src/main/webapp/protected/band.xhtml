@@ -20,7 +20,7 @@ and open the template in the editor.
                     var value = document.getElementById("bandid").innerHTML;
                     document.cookie = "bnd=" + value + ";";
                 </script>
-                <c:if test="#{existinguser.ifBandRated(facesContext.externalContext.requestCookieMap['bnd'].value)}">
+                <c:if test="#{existinguser.ifBandNotRated(band.currentBand.name)}">
                 <div class="stardiv">
 
                     <h:commandLink action="#{rate.rateBand(1,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img></h:commandLink>
@@ -30,9 +30,9 @@ and open the template in the editor.
                     <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
                 </div>
                 </c:if>
-                <c:if test="#{!existinguser.ifBandRated(facesContext.externalContext.requestCookieMap['bnd'].value)}">
+                <c:if test="#{!existinguser.ifBandNotRated(band.currentBand.name)}">
                 <div class="ratesdiv">
-                    Your rate: #{existinguser.getRate(facesContext.externalContext.requestCookieMap['bnd'].value)}
+                    Your rate: #{existinguser.getRate(band.currentBand.id)}
                 </div>
                 </c:if>
                 <div class="ratesdiv">

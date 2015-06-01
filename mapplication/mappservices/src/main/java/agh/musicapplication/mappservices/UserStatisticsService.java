@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class UserStatisticsService implements UserStatisticsServiceInterface {
 
-    @Inject
-    RoundingServiceInterface roundingService;
+//    @Inject
+    RoundingServiceInterface roundingService = new RoundingService();
 
     @Inject
     MUserBandRepositoryInterface userBandRepository;
@@ -39,13 +39,25 @@ public class UserStatisticsService implements UserStatisticsServiceInterface {
     @Override
     public double getAvgGradeOfSomeUser(MUser u) {
         double bandrank = 0.0, vocalrank = 0.0;
+        long bandCount = 0L, vocalCount = 0L;
+        double sum;
         if (userBandRepository.getAvgBandRankOfSomeUser(u) != null) {
             bandrank = userBandRepository.getAvgBandRankOfSomeUser(u);
         }
         if (userVocalistRepository.getAvgVocalistRankOfSomeUser(u) != null) {
             vocalrank = userVocalistRepository.getAvgVocalistRankOfSomeUser(u);
         }
-        double sum = bandrank + vocalrank;
+        if (userBandRepository.getCountOfMUserBand(u) != null) {
+            bandCount = userBandRepository.getCountOfMUserBand(u);
+        }
+        if (userVocalistRepository.getCountOfMUserVocalist(u) != null) {
+            vocalCount = userVocalistRepository.getCountOfMUserVocalist(u);
+        }
+        if (((double) (bandrank * bandCount + vocalrank * vocalCount)) == 0 && ((double) (bandCount + vocalCount)) == 0) {
+            sum = 0.0;
+        } else {
+            sum = (double) (bandrank * bandCount + vocalrank * vocalCount) / (double) (bandCount + vocalCount);
+        }
         return roundingService.round(sum, 2);
     }
 
