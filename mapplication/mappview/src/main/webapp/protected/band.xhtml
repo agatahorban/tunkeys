@@ -50,7 +50,6 @@ and open the template in the editor.
             <div class="normaltext"> <center> <table>
 
                         <tr>
-                            
                                 <ui:repeat var="a" value="#{band.albumsSorted}" varStatus="status">
                                     <td><h:commandLink action="#{band.goToAlbum(a)}"><img width="150px" src="#{resource[a.cover]}"></img><br/><center>#{a.name}</center></h:commandLink> </td>
                                 </ui:repeat>
