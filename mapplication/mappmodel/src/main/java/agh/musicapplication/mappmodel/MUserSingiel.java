@@ -29,7 +29,7 @@ public class MUserSingiel extends MBasicEntity {
     public MUserSingiel() {
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 

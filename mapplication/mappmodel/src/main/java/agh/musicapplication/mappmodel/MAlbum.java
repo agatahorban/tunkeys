@@ -28,7 +28,7 @@ public class MAlbum extends MBasicEntity {
     private String name;
     
     @Column
-    private int grade;
+    private double grade;
     
     @Column
     private String cover;
@@ -64,14 +64,14 @@ public class MAlbum extends MBasicEntity {
         this.name = name;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
-
+    
     public int getNumberOfVotes() {
         return numberOfVotes;
     }

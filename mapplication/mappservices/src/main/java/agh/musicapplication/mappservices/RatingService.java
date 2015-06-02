@@ -5,10 +5,14 @@
  */
 package agh.musicapplication.mappservices;
 
+import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MUserAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
+import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MUser;
+import agh.musicapplication.mappmodel.MUserAlbum;
 import agh.musicapplication.mappmodel.MUserBand;
 import agh.musicapplication.mappservices.interfaces.RatingServiceInterface;
 import java.util.Map;
@@ -28,7 +32,13 @@ public class RatingService implements RatingServiceInterface {
     MUserBandRepositoryInterface ubri;
 
     @Inject
+    MUserAlbumRepositoryInterface uari;
+    
+    @Inject
     MBandRepositoryInterface bri;
+    
+    @Inject
+    MAlbumRepositoryInterface ari;
 
     @Inject
     GradeCountingService gcs;
@@ -68,5 +78,22 @@ public class RatingService implements RatingServiceInterface {
         this.gcs = gcs;
     }
 
-    
+    public boolean rateAlbum(MUser user, MAlbum album, int grade) {
+        boolean rate;
+        try {
+            MUserAlbum museralbum = new MUserAlbum();
+            museralbum.setAlbum(album);
+            museralbum.setUser(user);
+            museralbum.setGrade(grade);
+            uari.insert(museralbum);
+            GradeCountingService.GradeHolder gh = gcs.countNewGrade(album.getNumberOfVotes(), album.getGrade(), grade);
+            album.setGrade(gh.getGrade());
+            album.setNumberOfVotes(gh.getCount());
+            ari.update(album);
+            rate = true;
+        } catch (NullPointerException e) {
+            rate = false;
+        }
+        return rate;
+    }
 }

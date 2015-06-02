@@ -30,7 +30,7 @@ public class MUserReview extends MBasicEntity {
     public MUserReview() {
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 

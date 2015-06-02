@@ -26,7 +26,7 @@ public class MSong extends MBasicEntity {
     @Column
     private String name;
     @Column
-    private int grade;
+    private double grade;
     @Column(name = "number_of_votes")
     private int numberOfVotes;
     
@@ -54,11 +54,11 @@ public class MSong extends MBasicEntity {
         this.name = name;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 

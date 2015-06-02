@@ -46,17 +46,17 @@ public class ListSplittingServiceTest {
     /**
      * Test of splitList method, of class ListSplittingService.
      */
-    @Test
-    public void testSplitList() {
-        System.out.println("splitList");
-        List<MBasicEntity> oldList = null;
-        int number = 0;
-        ListSplittingService instance = new ListSplittingService();
-        List<List<MBasicEntity>> expResult = null;
-        List<List<MBasicEntity>> result = instance.splitList(oldList, number);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testSplitList() {
+//        System.out.println("splitList");
+//        List<MBasicEntity> oldList = null;
+//        int number = 0;
+//        ListSplittingService instance = new ListSplittingService();
+//        List<List<MBasicEntity>> expResult = null;
+//        List<List<MBasicEntity>> result = instance.splitList(oldList, number);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }
