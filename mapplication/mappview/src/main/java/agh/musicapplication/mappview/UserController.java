@@ -13,6 +13,7 @@ import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.UserStatisticsService;
 import agh.musicapplication.mappservices.interfaces.UserStatisticsServiceInterface;
+import agh.musicapplication.mappview.cookies.CookieHelper;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -55,6 +56,7 @@ public class UserController {
         vocalRated = userStatisticsService.getAmountOfVocalistsRatedByUser(muser);
         bandRated = userStatisticsService.getAmountOfBandsRatedByUser(muser);
         avgGrade = userStatisticsService.getAvgGradeOfSomeUser(muser);
+        CookieHelper.setCookie("bandname", "", 10000000);
     }
 
     public MUser getMuser() {

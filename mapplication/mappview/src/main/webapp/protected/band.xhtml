@@ -21,19 +21,19 @@ and open the template in the editor.
                     document.cookie = "bnd=" + value + ";";
                 </script>
                 <c:if test="#{existinguser.ifBandNotRated(band.currentBand.name)}">
-                <div class="stardiv">
+                    <div class="stardiv">
 
-                    <h:commandLink action="#{rate.rateBand(1,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img></h:commandLink>
-                    <h:commandLink action="#{rate.rateBand(2,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img></h:commandLink>
-                    <h:commandLink action="#{rate.rateBand(3,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img></h:commandLink>
-                    <h:commandLink action="#{rate.rateBand(4,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img></h:commandLink>
-                    <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
-                </div>
+                        <h:commandLink action="#{rate.rateBand(1,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateBand(2,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateBand(3,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateBand(4,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateBand(5,facesContext.externalContext.requestCookieMap['bnd'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
+                    </div>
                 </c:if>
                 <c:if test="#{!existinguser.ifBandNotRated(band.currentBand.name)}">
-                <div class="ratesdiv">
-                    Your rate: #{existinguser.getRate(band.currentBand.id)}
-                </div>
+                    <div class="ratesdiv">
+                        Your rate: #{existinguser.getRate(band.currentBand.id)}
+                    </div>
                 </c:if>
                 <div class="ratesdiv">
                     Average mark: #{band.bandMark}
@@ -45,17 +45,19 @@ and open the template in the editor.
                     Genre:   #{band.currentBand.genre}
                 </div>
                 <div id="bandinfo" class="normaltext">#{band.currentBand.description}</div>
-            </h:form>
+            </h:form><h:form>
             <div class="genresdiv">Albums:</div>
             <div class="normaltext"> <center> <table>
 
-                    <tr>
-                <ui:repeat var="a" value="#{band.albumsSorted}" varStatus="status">
-                    <td><img width="150px" src="#{resource[a.cover]}"></img> <br/><center>#{a.name}</center></td>
-                </ui:repeat>
-                    </tr>
+                        <tr>
+                            
+                                <ui:repeat var="a" value="#{band.albumsSorted}" varStatus="status">
+                                    <td><h:commandLink action="#{band.goToAlbum(a)}"><img width="150px" src="#{resource[a.cover]}"></img><br/><center>#{a.name}</center></h:commandLink> </td>
+                                </ui:repeat>
+                            
+                        </tr>
 
-                    </table></center></div>
+                    </table></center></div></h:form>
 
         </ui:define>
     </ui:composition>

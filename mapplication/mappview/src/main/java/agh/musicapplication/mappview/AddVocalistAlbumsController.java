@@ -148,7 +148,7 @@ public class AddVocalistAlbumsController {
         album.setVocalist(currentVocalist);
         album.setGenre(getGenre(selectedGenre));
         try {
-            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(f1);
+            String filepath = "C:\\Users\\horbana\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(f1);
             f1.write(filepath);
             album.setCover("img/" + getFilename(f1));
         } catch (IOException ex) {

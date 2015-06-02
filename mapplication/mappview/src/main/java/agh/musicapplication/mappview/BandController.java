@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
@@ -12,9 +11,9 @@ import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappservices.interfaces.RoundingServiceInterface;
 import agh.musicapplication.mappview.cookies.CookieHelper;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
@@ -26,33 +25,40 @@ import org.springframework.context.annotation.Scope;
 @Named("band")
 @Scope("request")
 public class BandController {
-    
+
     @Inject
     MBandRepositoryInterface bri;
-    
+
     @Inject
     MAlbumRepositoryInterface ari;
-    
+
     @Inject
     RoundingServiceInterface rsi;
-    
+
     private MBand currentBand;
     private String bandName;
     private int howMany;
 
     private List<MAlbum> albumsSorted;
-    
+
     public BandController() {
     }
-    
+
     @PostConstruct
     public void init() {
-        bandName = CookieHelper.getCookie("bandname").getValue();
-        currentBand = bri.findBandByName(bandName);
-        albumsSorted = ari.getAlbumsOfSomeBandSortedAlphabetically(currentBand);
+        if(CookieHelper.getCookie("bandname").getValue()!=null)
+            bandName = CookieHelper.getCookie("bandname").getValue();
+        else
+            bandName = "";
+        if (bri.findBandByName(bandName) != null) {
+            currentBand = bri.findBandByName(bandName);
+            albumsSorted = ari.getAlbumsOfSomeBandSortedAlphabetically(currentBand);
+        } else {
+            currentBand = new MBand();
+            albumsSorted = new ArrayList<>();
+        }
     }
 
-    
     public String getBandName() {
         return bandName;
     }
@@ -69,13 +75,19 @@ public class BandController {
         this.currentBand = currentBand;
     }
 
-    public String goToBandCreating(){
+    public String goToBandCreating() {
         return "/protected/createband.xhtml";
     }
 
-    public double getBandMark(){
+    public double getBandMark() {
         return rsi.round(currentBand.getGrade(), 2);
 
+    }
+
+    public String goToAlbum(MAlbum a) {
+        String id = Long.toString(a.getId());
+        CookieHelper.setCookie("albumid", Long.toString(a.getId()), 1000000);
+        return "bands";
     }
 
     public MBandRepositoryInterface getBri() {
@@ -108,5 +120,5 @@ public class BandController {
 
     public void setAlbumsSorted(List<MAlbum> albumsSorted) {
         this.albumsSorted = albumsSorted;
-    }    
+    }
 }
