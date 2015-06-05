@@ -46,10 +46,11 @@ public class BandController {
 
     @PostConstruct
     public void init() {
-        if(CookieHelper.getCookie("bandname").getValue()!=null)
+        if (CookieHelper.getCookie("bandname").getValue() != null) {
             bandName = CookieHelper.getCookie("bandname").getValue();
-        else
+        } else {
             bandName = "";
+        }
         if (bri.findBandByName(bandName) != null) {
             currentBand = bri.findBandByName(bandName);
             albumsSorted = ari.getAlbumsOfSomeBandSortedAlphabetically(currentBand);
@@ -87,7 +88,7 @@ public class BandController {
     public String goToAlbum(MAlbum a) {
         String id = Long.toString(a.getId());
         CookieHelper.setCookie("albumid", Long.toString(a.getId()), 1000000);
-        return "bands";
+        return "/protected/album.xhtml?faces-redirect=true&albumid=" + a.getId();
     }
 
     public MBandRepositoryInterface getBri() {

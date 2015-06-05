@@ -5,8 +5,10 @@
  */
 package agh.musicapplication.mappview;
 
+import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
+import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MGenre;
 import agh.musicapplication.mappmodel.MUser;
@@ -37,6 +39,9 @@ public class RatingController {
     @Inject
     MBandRepositoryInterface bri;
     
+    @Inject
+    MAlbumRepositoryInterface ari;
+    
     int bandid;
     
     private MUser muser;
@@ -52,6 +57,13 @@ public class RatingController {
         rsi.rateBand(muser, b, rate);
         b.setGenre(MGenre.ROCK);
         bri.update(b);
+        return "bands.xhtml";
+    }
+    
+     public String rateAlbum(int rate, Long band){
+        MAlbum a = ari.find(band);
+        rsi.rateAlbum(muser, a, rate);
+        ari.update(a);
         return "bands.xhtml";
     }
    

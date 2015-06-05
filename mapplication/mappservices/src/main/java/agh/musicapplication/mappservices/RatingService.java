@@ -15,7 +15,6 @@ import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappmodel.MUserAlbum;
 import agh.musicapplication.mappmodel.MUserBand;
 import agh.musicapplication.mappservices.interfaces.RatingServiceInterface;
-import java.util.Map;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -78,18 +77,21 @@ public class RatingService implements RatingServiceInterface {
         this.gcs = gcs;
     }
 
-    public boolean rateAlbum(MUser user, MAlbum album, int grade) {
+
+
+    @Override
+    public boolean rateAlbum(MUser muser, MAlbum a, int rank) {
         boolean rate;
         try {
             MUserAlbum museralbum = new MUserAlbum();
-            museralbum.setAlbum(album);
-            museralbum.setUser(user);
-            museralbum.setGrade(grade);
+            museralbum.setAlbum(a);
+            museralbum.setUser(muser);
+            museralbum.setGrade(rank);
             uari.insert(museralbum);
-            GradeCountingService.GradeHolder gh = gcs.countNewGrade(album.getNumberOfVotes(), album.getGrade(), grade);
-            album.setGrade(gh.getGrade());
-            album.setNumberOfVotes(gh.getCount());
-            ari.update(album);
+            GradeCountingService.GradeHolder gh = gcs.countNewGrade(a.getNumberOfVotes(), a.getGrade(), rank);
+            a.setGrade(gh.getGrade());
+            a.setNumberOfVotes(gh.getCount());
+            ari.update(a);
             rate = true;
         } catch (NullPointerException e) {
             rate = false;

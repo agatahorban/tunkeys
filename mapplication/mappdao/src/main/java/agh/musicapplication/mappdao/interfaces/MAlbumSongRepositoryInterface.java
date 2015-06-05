@@ -9,6 +9,7 @@ import agh.musicapplication.mappdao.Crudable;
 import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MAlbumSong;
 import agh.musicapplication.mappmodel.MSong;
+import java.util.List;
 
 /**
  *
@@ -16,4 +17,5 @@ import agh.musicapplication.mappmodel.MSong;
  */
 public interface MAlbumSongRepositoryInterface extends Crudable<MAlbumSong> {
     public MAlbumSong getMAlbumSongWithSomeAlbumNameAndSongName(MAlbum a, MSong s);
+    public List<MSong> getAllSongsOfSomeAlbum(MAlbum a);
 }

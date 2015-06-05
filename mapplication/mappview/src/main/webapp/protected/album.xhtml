@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <h:form>
+                <div class="bandtext" id="blaa">#{album.currentAlbum.name}</div>
+                <center><div><img width="400px" src="#{resource[album.currentAlbum.cover]}"></img></div></center>
+                <c:if test="#{existinguser.ifAlbumNotRated(facesContext.externalContext.requestCookieMap['albumid'].value)}">
+                    <div class="stardiv">
+                        <h:commandLink action="#{rate.rateAlbum(1,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star1" src="#{resource['img/star1_small.png']}" onmouseover="changeStar(this)" onmouseout="changeStarToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateAlbum(2,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star2" src="#{resource['img/star1_small.png']}" onmouseover="changeTwoStars(this)" onmouseout="changeTwoStarsToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateAlbum(3,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star3" src="#{resource['img/star1_small.png']}" onmouseover="changeThreeStars(this)" onmouseout="changeThreeStarsToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateAlbum(4,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star4" src="#{resource['img/star1_small.png']}" onmouseover="changeFourStars(this)" onmouseout="changeFourStarsToNormal(this)"></img></h:commandLink>
+                        <h:commandLink action="#{rate.rateAlbum(5,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star5" src="#{resource['img/star1_small.png']}" onmouseover="changeFiveStars(this)" onmouseout="changeFiveStarsToNormal(this)"></img></h:commandLink>
+                    </div>
+                </c:if>
+                <c:if test="#{!existinguser.ifAlbumNotRated(facesContext.externalContext.requestCookieMap['albumid'].value)}">
+                    <div class="ratesdiv">
+                        Your rate: #{existinguser.getAlbumRate(facesContext.externalContext.requestCookieMap['albumid'].value)}
+                    </div>
+                </c:if>
+                <div class="ratesdiv">
+                    Average mark: #{album.albumMark}
+                </div>
+                <div class="ratesdiv">
+                    Rated   #{album.currentAlbum.numberOfVotes} times
+                </div>
+                <div class="genresdiv">
+                    Genre:   #{album.currentAlbum.genre}
+                </div>
+                <center> <div class="songsTabDiv">
+                        <table>
+                            <tr>
+                                <td>Name</td><td>Rate</td>
+                            </tr>
+                            <ui:repeat var="s" value="#{album.albumSongs()}" varStatus="status">
+                                <tr>
+                                    <td><h:commandLink action="#{band.goToAlbum(a)}"><center>#{s.name}</center></h:commandLink> </td>
+                                    <td> <div class="stardiv">
+                                            <h:commandLink action="#{rate.rateAlbum(1,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="#{facesContext.externalContext.requestCookieMap['albumid'].value}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeStarSmall(this)" onmouseout="changeStarToNormalSmall(this)"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateAlbum(2,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star2" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeTwoStarsSmall(this)" onmouseout="changeTwoStarsToNormalSmall(this)"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateAlbum(3,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star3" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeThreeStarsSmall(this)" onmouseout="changeThreeStarsToNormalSmall(this)"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateAlbum(4,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star4" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFourStarsSmall(this)" onmouseout="changeFourStarsToNormalSmall(this)"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateAlbum(5,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="star5" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFiveStarsSmall(this)" onmouseout="changeFiveStarsToNormalSmall(this)"></img></h:commandLink>
+                                        </div> </td>
+                                </tr>
+                            </ui:repeat>
+                        </table>
+                    </div>
+                </center>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -6,22 +6,32 @@
 package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MAlbumSongRepositoryInterface;
 import agh.musicapplication.mappmodel.MAlbum;
+import agh.musicapplication.mappmodel.MSong;
 import agh.musicapplication.mappservices.interfaces.RoundingServiceInterface;
 import agh.musicapplication.mappview.cookies.CookieHelper;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
+import org.springframework.context.annotation.Scope;
 
 /**
  *
  * @author horbana
  */
+@Named("album")
+@Scope("request")
 public class AlbumController {
     @Inject
     MAlbumRepositoryInterface ari;
     
     @Inject
     RoundingServiceInterface rsi;
+    
+    @Inject
+    MAlbumSongRepositoryInterface asri;
     
     private MAlbum currentAlbum;
     private Long albumId;
@@ -52,6 +62,8 @@ public class AlbumController {
         this.albumId = albumId;
     }
     
-    
+    public List<MSong> albumSongs(){
+        return asri.getAllSongsOfSomeAlbum(currentAlbum);
+    }
     
 }

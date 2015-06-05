@@ -49,7 +49,7 @@ public class CreatingBandController {
     public String addBand() {
         newBand.setGenre(getGenre(selectedGenre));
         try {
-            String filepath = "C:\\Users\\horbana\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(file1);
+            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(file1);
             file1.write(filepath);
             newBand.setCover("img/"+getFilename(file1));
         } catch (IOException ex) {

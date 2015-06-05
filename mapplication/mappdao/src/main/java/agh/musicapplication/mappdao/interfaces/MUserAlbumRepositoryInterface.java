@@ -6,6 +6,8 @@
 package agh.musicapplication.mappdao.interfaces;
 
 import agh.musicapplication.mappdao.Crudable;
+import agh.musicapplication.mappmodel.MAlbum;
+import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappmodel.MUserAlbum;
 
 /**
@@ -13,5 +15,6 @@ import agh.musicapplication.mappmodel.MUserAlbum;
  * @author horbana
  */
 public interface MUserAlbumRepositoryInterface extends Crudable<MUserAlbum>{
-    
+    public Long getCountOfMUserAlbum(MUser user, MAlbum album);
+    public MUserAlbum getMUserAlbum(MUser user, MAlbum band);
 }

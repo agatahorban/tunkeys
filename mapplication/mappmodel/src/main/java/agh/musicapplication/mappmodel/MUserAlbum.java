@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class MUserAlbum extends MBasicEntity {
 
     @Column
-    private double grade;
+    private int grade;
 
     @ManyToOne
     private MUser user;
@@ -27,11 +27,11 @@ public class MUserAlbum extends MBasicEntity {
     @ManyToOne
     private MAlbum album;
 
-    public double getGrade() {
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(double grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 

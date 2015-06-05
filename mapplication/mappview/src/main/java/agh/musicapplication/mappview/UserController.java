@@ -6,14 +6,18 @@
 package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappdao.MUserBandRepository;
+import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MUserAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
+import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.UserStatisticsService;
 import agh.musicapplication.mappservices.interfaces.UserStatisticsServiceInterface;
 import agh.musicapplication.mappview.cookies.CookieHelper;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -30,7 +34,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Named("existinguser")
 @Scope("session")
 @Transactional
-public class UserController {
+public class UserController implements Serializable{
 
     private UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     private MUser muser;
@@ -40,9 +44,16 @@ public class UserController {
 
     @Inject
     MUserBandRepositoryInterface ubri;
+    
+    @Inject
+    MUserAlbumRepositoryInterface uari;
 
     @Inject
     MBandRepositoryInterface bri;
+    
+    @Inject
+    MAlbumRepositoryInterface ari;
+
 
     @Inject
     UserStatisticsServiceInterface userStatisticsService;
@@ -118,12 +129,28 @@ public class UserController {
         }
         return ubri.getCountOfMUserBand(muser, b).equals(0L);
     }
+    
+     public boolean ifAlbumNotRated(Long album) {
+        MAlbum a = ari.find(album);
+        if (a == null) {
+            return false;
+        }
+        return uari.getCountOfMUserAlbum(muser, a).equals(0L);
+    }
 
     public int getRate(long band) {
         if (bri.find(band) == null) {
             return 0;
         } else {
             return ubri.getMUserBand(muser, bri.find(band)).getGrade();
+        }
+    }
+    
+    public double getAlbumRate(long album) {
+        if (ari.find(album) == null) {
+            return 0;
+        } else {
+            return uari.getMUserAlbum(muser, ari.find(album)).getGrade();
         }
     }
 }
