@@ -150,11 +150,8 @@ public class UserController implements Serializable {
         return uari.getCountOfMUserAlbum(muser, a).equals(0L);
     }
 
-    public boolean ifSongNotRated() {
-        cc.setNumber(cc.getNumber()+1);
-        String cookieName = "song"+number;
-        Long value = Long.parseLong(CookieHelper.getCookie(cookieName).getValue());
-        MSong s = sri.find(value);
+    public boolean ifSongNotRated(Long song) {
+        MSong s = sri.find(song);
         if (s== null) {
             return false;
         }

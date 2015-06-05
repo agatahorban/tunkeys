@@ -15,14 +15,16 @@ and open the template in the editor.
             <h:form>
                 <script>
                     var number = 0;
-                    function findId(id,number){
-                        return "star_song_"+number.toString()+"_"+id.toString();
-                    };
-                    
-                    function getNumber(){
-                        number = number +1;
+                    function findId(id, number) {
+                        return "star_song_" + number.toString() + "_" + id.toString();
+                    }
+                    ;
+
+                    function getNumber() {
+                        number = number + 1;
                         return 'song' + number.toString();
-                    };
+                    }
+                    ;
                 </script>
                 <div class="bandtext" id="blaa">#{album.currentAlbum.name}</div>
                 <center><div><img width="400px" src="#{resource[album.currentAlbum.cover]}"></img></div></center>
@@ -58,13 +60,19 @@ and open the template in the editor.
                                 <tr>
                                     <td><center>#{s.name}</center></td>
                                     <td> <div class="stardiv">
-                                            <c:if test="#{existinguser.ifSongNotRated()}">
-                                            <h:commandLink action="#{rate.rateSong(1,s.id)}" ><img id="#{album.setDivId(s.id,1)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeStarSmall(this)" onmouseout="changeStarToNormalSmall(this)"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateSong(2,s.id)}" ><img id="#{album.setDivId(s.id,2)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeTwoStarsSmall(this,findId(1,#{s.id}))" onmouseout="changeTwoStarsToNormalSmall(this,findId(1,#{s.id}))"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateSong(3,s.id)}" ><img id="#{album.setDivId(s.id,3)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeThreeStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}))" onmouseout="changeThreeStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}))"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateSong(4,s.id)}" ><img id="#{album.setDivId(s.id,4)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFourStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}))" onmouseout="changeFourStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}))"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateSong(5,s.id)}" ><img id="#{album.setDivId(s.id,5)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFiveStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}),findId(4,#{s.id}))" onmouseout="changeFiveStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}),findId(4,#{s.id}))"></img></h:commandLink>
-                                            </c:if>
+                                            <c:set var="test" value="#{s.id}"/>
+
+                                                
+                                            <h:panelGroup rendered="#{existinguser.ifSongNotRated(s.id)}">
+                                                <h:commandLink action="#{rate.rateSong(1,s.id)}" ><img id="#{album.setDivId(s.id,1)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeStarSmall(this)" onmouseout="changeStarToNormalSmall(this)"></img></h:commandLink>
+                                                <h:commandLink action="#{rate.rateSong(2,s.id)}" ><img id="#{album.setDivId(s.id,2)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeTwoStarsSmall(this, findId(1,#{s.id}))" onmouseout="changeTwoStarsToNormalSmall(this, findId(1,#{s.id}))"></img></h:commandLink>
+                                                <h:commandLink action="#{rate.rateSong(3,s.id)}" ><img id="#{album.setDivId(s.id,3)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeThreeStarsSmall(this, findId(1,#{s.id}), findId(2,#{s.id}))" onmouseout="changeThreeStarsToNormalSmall(this, findId(1,#{s.id}), findId(2,#{s.id}))"></img></h:commandLink>
+                                                <h:commandLink action="#{rate.rateSong(4,s.id)}" ><img id="#{album.setDivId(s.id,4)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFourStarsSmall(this, findId(1,#{s.id}), findId(2,#{s.id}), findId(3,#{s.id}))" onmouseout="changeFourStarsToNormalSmall(this, findId(1,#{s.id}), findId(2,#{s.id}), findId(3,#{s.id}))"></img></h:commandLink>
+                                                <h:commandLink action="#{rate.rateSong(5,s.id)}" ><img id="#{album.setDivId(s.id,5)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFiveStarsSmall(this, findId(1,#{s.id}), findId(2,#{s.id}), findId(3,#{s.id}), findId(4,#{s.id}))" onmouseout="changeFiveStarsToNormalSmall(this, findId(1,#{s.id}), findId(2,#{s.id}), findId(3,#{s.id}), findId(4,#{s.id}))"></img></h:commandLink>
+                                            </h:panelGroup>
+                                            <h:panelGroup rendered="#{!existinguser.ifSongNotRated(s.id)}">
+                                            #{s.grade}
+                                            </h:panelGroup>
                                         </div> </td>
                                 </tr>
                             </ui:repeat>
