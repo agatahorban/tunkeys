@@ -8,6 +8,7 @@ package agh.musicapplication.mappservices.interfaces;
 import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
 import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
+import agh.musicapplication.mappmodel.MSong;
 import agh.musicapplication.mappmodel.MUser;
 import javax.inject.Inject;
 
@@ -19,4 +20,5 @@ public interface RatingServiceInterface {
     
     public boolean rateBand(MUser user, MBand band, int grade);
     public boolean rateAlbum(MUser muser, MAlbum a, int rate);
+    public boolean rateSong(MUser muser, MSong s, int rate);
 }

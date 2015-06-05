@@ -8,11 +8,14 @@ package agh.musicapplication.mappview;
 import agh.musicapplication.mappdao.MUserBandRepository;
 import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MSongRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MUserSongRepositoryInterface;
 import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
+import agh.musicapplication.mappmodel.MSong;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.UserStatisticsService;
 import agh.musicapplication.mappservices.interfaces.UserStatisticsServiceInterface;
@@ -23,7 +26,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Named("existinguser")
 @Scope("session")
 @Transactional
-public class UserController implements Serializable{
+public class UserController implements Serializable {
 
     private UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     private MUser muser;
@@ -44,22 +46,31 @@ public class UserController implements Serializable{
 
     @Inject
     MUserBandRepositoryInterface ubri;
-    
+
     @Inject
     MUserAlbumRepositoryInterface uari;
+    
+    @Inject
+    MUserSongRepositoryInterface usri;
 
     @Inject
     MBandRepositoryInterface bri;
-    
+
     @Inject
     MAlbumRepositoryInterface ari;
-
+    
+    @Inject
+    MSongRepositoryInterface sri;
 
     @Inject
     UserStatisticsServiceInterface userStatisticsService;
+    
+    @Inject
+    CountController cc;
 
     private long vocalRated, bandRated;
     private double avgGrade;
+    private int number;
 
     @PostConstruct
     public void initalizeMUser() {
@@ -68,6 +79,7 @@ public class UserController implements Serializable{
         bandRated = userStatisticsService.getAmountOfBandsRatedByUser(muser);
         avgGrade = userStatisticsService.getAvgGradeOfSomeUser(muser);
         CookieHelper.setCookie("bandname", "", 10000000);
+        number = 0;
     }
 
     public MUser getMuser() {
@@ -129,13 +141,24 @@ public class UserController implements Serializable{
         }
         return ubri.getCountOfMUserBand(muser, b).equals(0L);
     }
-    
-     public boolean ifAlbumNotRated(Long album) {
+
+    public boolean ifAlbumNotRated(Long album) {
         MAlbum a = ari.find(album);
         if (a == null) {
             return false;
         }
         return uari.getCountOfMUserAlbum(muser, a).equals(0L);
+    }
+
+    public boolean ifSongNotRated() {
+        cc.setNumber(cc.getNumber()+1);
+        String cookieName = "song"+number;
+        Long value = Long.parseLong(CookieHelper.getCookie(cookieName).getValue());
+        MSong s = sri.find(value);
+        if (s== null) {
+            return false;
+        }
+        return usri.getCountOfMUserSong(muser, s).equals(0L);
     }
 
     public int getRate(long band) {
@@ -145,7 +168,7 @@ public class UserController implements Serializable{
             return ubri.getMUserBand(muser, bri.find(band)).getGrade();
         }
     }
-    
+
     public double getAlbumRate(long album) {
         if (ari.find(album) == null) {
             return 0;

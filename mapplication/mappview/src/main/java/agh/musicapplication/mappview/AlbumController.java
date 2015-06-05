@@ -63,6 +63,9 @@ public class AlbumController {
     }
     
     public List<MSong> albumSongs(){
+        for (int i = 0; i < asri.getAllSongsOfSomeAlbum(currentAlbum).size(); i++) {
+            CookieHelper.setCookie("song"+Integer.toString(i+1), Long.toString(asri.getAllSongsOfSomeAlbum(currentAlbum).get(i).getId()), 1000000000);
+        }
         return asri.getAllSongsOfSomeAlbum(currentAlbum);
     }
     
@@ -73,7 +76,6 @@ public class AlbumController {
         sb.append(Long.toString(id));
         sb.append("_");
         sb.append(Integer.toString(number));
-        CookieHelper.setCookie("sdiv"+number, sb.toString(), 1000000000);
         return sb.toString();
     }
     

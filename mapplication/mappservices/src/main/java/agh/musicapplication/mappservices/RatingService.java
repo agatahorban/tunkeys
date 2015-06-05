@@ -7,13 +7,17 @@ package agh.musicapplication.mappservices;
 
 import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MSongRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MUserBandRepositoryInterface;
+import agh.musicapplication.mappdao.interfaces.MUserSongRepositoryInterface;
 import agh.musicapplication.mappmodel.MAlbum;
 import agh.musicapplication.mappmodel.MBand;
+import agh.musicapplication.mappmodel.MSong;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappmodel.MUserAlbum;
 import agh.musicapplication.mappmodel.MUserBand;
+import agh.musicapplication.mappmodel.MUserSong;
 import agh.musicapplication.mappservices.interfaces.RatingServiceInterface;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -34,10 +38,16 @@ public class RatingService implements RatingServiceInterface {
     MUserAlbumRepositoryInterface uari;
     
     @Inject
+    MUserSongRepositoryInterface usri;
+    
+    @Inject
     MBandRepositoryInterface bri;
     
     @Inject
     MAlbumRepositoryInterface ari;
+    
+    @Inject
+    MSongRepositoryInterface sri;
 
     @Inject
     GradeCountingService gcs;
@@ -97,5 +107,25 @@ public class RatingService implements RatingServiceInterface {
             rate = false;
         }
         return rate;
+    }
+
+    @Override
+    public boolean rateSong(MUser muser, MSong s, int rate) {
+         boolean r;
+        try {
+            MUserSong musersong = new MUserSong();
+            musersong.setSong(s);
+            musersong.setUser(muser);
+            musersong.setGrade(rate);
+            usri.insert(musersong);
+            GradeCountingService.GradeHolder gh = gcs.countNewGrade(s.getNumberOfVotes(), s.getGrade(), rate);
+            s.setGrade(gh.getGrade());
+            s.setNumberOfVotes(gh.getCount());
+            sri.update(s);
+            r = true;
+        } catch (NullPointerException e) {
+            r = false;
+        }
+        return r;
     }
 }

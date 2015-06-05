@@ -14,8 +14,14 @@ and open the template in the editor.
         <ui:define name="body">
             <h:form>
                 <script>
+                    var number = 0;
                     function findId(id,number){
                         return "star_song_"+number.toString()+"_"+id.toString();
+                    };
+                    
+                    function getNumber(){
+                        number = number +1;
+                        return 'song' + number.toString();
                     };
                 </script>
                 <div class="bandtext" id="blaa">#{album.currentAlbum.name}</div>
@@ -50,13 +56,15 @@ and open the template in the editor.
                             </tr>
                             <ui:repeat var="s" value="#{album.albumSongs()}" varStatus="status">
                                 <tr>
-                                    <td><h:commandLink action="#{band.goToAlbum(a)}"><center>#{s.name}</center></h:commandLink> </td>
+                                    <td><center>#{s.name}</center></td>
                                     <td> <div class="stardiv">
-                                            <h:commandLink action="#{rate.rateAlbum(1,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="#{album.setDivId(s.id,1)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeStarSmall(this)" onmouseout="changeStarToNormalSmall(this)"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateAlbum(2,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="#{album.setDivId(s.id,2)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeTwoStarsSmall(this,findId(1,#{s.id}))" onmouseout="changeTwoStarsToNormalSmall(this,findId(1,#{s.id}))"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateAlbum(3,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="#{album.setDivId(s.id,3)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeThreeStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}))" onmouseout="changeThreeStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}))"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateAlbum(4,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="#{album.setDivId(s.id,4)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFourStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}))" onmouseout="changeFourStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}))"></img></h:commandLink>
-                                            <h:commandLink action="#{rate.rateAlbum(5,facesContext.externalContext.requestCookieMap['albumid'].value)}" ><img id="#{album.setDivId(s.id,5)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFiveStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}),findId(4,#{s.id}))" onmouseout="changeFiveStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}),findId(4,#{s.id}))"></img></h:commandLink>
+                                            <c:if test="#{existinguser.ifSongNotRated()}">
+                                            <h:commandLink action="#{rate.rateSong(1,s.id)}" ><img id="#{album.setDivId(s.id,1)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeStarSmall(this)" onmouseout="changeStarToNormalSmall(this)"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateSong(2,s.id)}" ><img id="#{album.setDivId(s.id,2)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeTwoStarsSmall(this,findId(1,#{s.id}))" onmouseout="changeTwoStarsToNormalSmall(this,findId(1,#{s.id}))"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateSong(3,s.id)}" ><img id="#{album.setDivId(s.id,3)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeThreeStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}))" onmouseout="changeThreeStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}))"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateSong(4,s.id)}" ><img id="#{album.setDivId(s.id,4)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFourStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}))" onmouseout="changeFourStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}))"></img></h:commandLink>
+                                            <h:commandLink action="#{rate.rateSong(5,s.id)}" ><img id="#{album.setDivId(s.id,5)}" src="#{resource['img/star1_verysmall.png']}" onmouseover="changeFiveStarsSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}),findId(4,#{s.id}))" onmouseout="changeFiveStarsToNormalSmall(this,findId(1,#{s.id}),findId(2,#{s.id}),findId(3,#{s.id}),findId(4,#{s.id}))"></img></h:commandLink>
+                                            </c:if>
                                         </div> </td>
                                 </tr>
                             </ui:repeat>
