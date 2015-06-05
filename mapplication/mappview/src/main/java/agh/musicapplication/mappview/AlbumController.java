@@ -66,4 +66,15 @@ public class AlbumController {
         return asri.getAllSongsOfSomeAlbum(currentAlbum);
     }
     
+    public String setDivId(Long id, int number){
+        StringBuilder sb = new StringBuilder();
+        sb.append("star_");
+        sb.append("song_");
+        sb.append(Long.toString(id));
+        sb.append("_");
+        sb.append(Integer.toString(number));
+        CookieHelper.setCookie("sdiv"+number, sb.toString(), 1000000000);
+        return sb.toString();
+    }
+    
 }

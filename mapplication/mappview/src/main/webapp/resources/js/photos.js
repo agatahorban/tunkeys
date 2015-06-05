@@ -122,54 +122,54 @@ function changeStarToNormalSmall(x) {
     x.src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
 }
 
-function changeTwoStarsSmall(x) {
+function changeTwoStarsSmall(x,id1) {
     x.src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
 }
 
-function changeTwoStarsToNormalSmall(x) {
+function changeTwoStarsToNormalSmall(x,id1) {
     x.src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
 }
 
-function changeThreeStarsSmall(x) {
+function changeThreeStarsSmall(x,id1,id2) {
     x.src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id2).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
 }
 
-function changeThreeStarsToNormalSmall(x) {
+function changeThreeStarsToNormalSmall(x,id1,id2) {
     x.src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id2).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
 }
 
-function changeFourStarsSmall(x) {
+function changeFourStarsSmall(x,id1,id2,id3) {
     x.src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id2).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id3).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
 }
 
-function changeFourStarsToNormalSmall(x) {
+function changeFourStarsToNormalSmall(x,id1,id2,id3) {
     x.src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id2).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id3).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
 }
 
-function changeFiveStarsSmall(x) {
+function changeFiveStarsSmall(x,id1,id2,id3,id4) {
     x.src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
-    document.getElementById("star4").src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id2).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id3).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
+    document.getElementById(id4).src="/mappview/javax.faces.resource/img/star2_verysmall.png.xhtml";
 }
 
-function changeFiveStarsToNormal(x) {
+function changeFiveStarsToNormalSmall(x,id1,id2,id3,id4) {
     x.src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star1").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star2").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star3").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
-    document.getElementById("star4").src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id1).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id2).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id3).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
+    document.getElementById(id4).src="/mappview/javax.faces.resource/img/star1_verysmall.png.xhtml";
 }
