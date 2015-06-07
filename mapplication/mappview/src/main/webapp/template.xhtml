@@ -15,7 +15,7 @@
     </h:head>
     <h:body>
         <div id="logo"><a href="index.xhtml"><img src="#{resource['img/czesc1.jpg']}"></img></a><img src="#{resource['img/czesc2.jpg']}" ></img><a id="b" href="bands.xhtml">Bands</a><a id="b3">CDs and singles</a> <div class="roundedimg" style = 'background-image: url(#{resource[existinguser.muser.avatar]})'></div>
-            <a id="b4">#{existinguser.muser.login}</a></div>
+            <a id="b4" href="#{request.contextPath}/j_spring_security_logout">Log out</a></div>
         <div id="main">
                             <ui:insert name="body"/>
         </div>

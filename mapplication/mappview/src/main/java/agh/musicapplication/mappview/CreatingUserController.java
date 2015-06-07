@@ -9,11 +9,11 @@ import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappview.util.PathHolder;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,8 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Named("createuser")
 @Scope("request")
-@Transactional
 public class CreatingUserController {
+    
+    private static final Logger logger = LoggerFactory.getLogger(CreatingUserController.class);
 
     private MUser user;
 
@@ -41,16 +42,18 @@ public class CreatingUserController {
         try {
 
             String filepath = PathHolder.PATH + PathHolder.getFilename(file1);
-            Logger.getLogger(CreatingUserController.class.getName()).log(Level.SEVERE, "Zapisalem sciezke" + filepath);
+            logger.info("Zapisalem sciezke" + filepath);
             file1.write(filepath);
-            Logger.getLogger(CreatingUserController.class.getName()).log(Level.SEVERE, "Wrzucilem sciekze do pliku");
+            logger.info("Wrzucilem sciekze do pliku");
             user.setAvatar("img/" + PathHolder.getFilename(file1));
-            Logger.getLogger(CreatingUserController.class.getName()).log(Level.SEVERE, "Ustawilem avatar");
+            logger.info("Ustawilem avatar");
         } catch (IOException ex) {
-            Logger.getLogger(DemoBean.class.getName()).log(Level.SEVERE, null, ex);
+            logger.info("dupa blada");
 
         } finally {
+            logger.info("Finnaly block mutha");
             uri.insert(user);
+            logger.info("there shoud be my user in database");
         }
         return "login";
     }
@@ -71,4 +74,7 @@ public class CreatingUserController {
         this.file1 = file1;
     }
 
+    public String test(){
+        return "login";
+    }
 }

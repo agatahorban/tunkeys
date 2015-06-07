@@ -13,7 +13,7 @@ import javax.servlet.http.Part;
  * @author ag
  */
 public class PathHolder {
-    public static final String PATH = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\";
+    public static final String PATH = "C:\\Users\\ag\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\";
 
  public static String getFilename(Part part) {
         for (String cd : part.getHeader("content-disposition").split(";")) {
