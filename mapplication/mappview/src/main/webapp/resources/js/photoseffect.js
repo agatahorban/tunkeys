@@ -11,7 +11,9 @@
 //text[1] = "F15 Tom Cat!";
 //
 //
-window.onload = new Function("document.rotater.description.value=text[0]");
+//window.onload = window.onload = function() {
+//    if (howMany === 0) {alert('bla'); document.getElementById("firstb").src="mappview/javax.faces.resource/img/noband.png.xhtml";};
+//};
 
 var which = 0;
 var what = 0;

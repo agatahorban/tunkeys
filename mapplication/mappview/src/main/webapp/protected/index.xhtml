@@ -21,13 +21,26 @@
             </ui:repeat>
 
             <script>
+                window.onload = window.onload = function () {
+                    if (howMany &gt; 0) {
+                        document.getElementById("firstb").src=document.getElementById("bnddiv" + (0).toString()).innerHTML;;
+                    }
+                    
+                };
+
                 var photos = new Array();
                 var text = new Array();
 
                 var howMany = parseInt(document.getElementById("sizes").innerHTML);
-                for (var i = 0; i &lt; howMany; i++) {
-                    photos[i] = document.getElementById("bnddiv" + (i).toString()).innerHTML;
-                    text[i] = document.getElementById("bnddivn" + (i).toString()).innerHTML;
+                if (howMany > 0) {
+                    for (var i = 0; i &lt; howMany; i++) {
+                        photos[i] = document.getElementById("bnddiv" + (i).toString()).innerHTML;
+                        text[i] = document.getElementById("bnddivn" + (i).toString()).innerHTML;
+                    }
+                }
+                else
+                {
+                    photos[i] = "mappview/javax.faces.resource/img/noband.png.xhtml";
                 }
             </script>
             <h:outputScript library="js" name="photoseffect.js" />
@@ -36,9 +49,9 @@
             <div id="tenbands" class="normaltext">Ten bands you've rated lately:</div>
             <center>
                 <table border="0" cellpadding="0">
-                   
+
                     <tr>
-                        <td width="100%"><img src="#{existinguser.bandsRatedImages.get(0)}" width="400" height="264" name="photoslider"/></td>
+                        <td width="100%"><img id="firstb" src="/mappview/javax.faces.resource/img/noband.png.xhtml" width="400" height="264" name="photoslider"/></td>
                     </tr>
                     <tr>
                         <td width="100%"><form method="POST" name="rotater">
@@ -53,6 +66,7 @@
                         </td>
                     </tr>
                 </table>
+
             </center>
             <h:outputScript library="js" name="photoseffect.js" />
             <h:outputScript library="js" name="photoseffect.js" />
@@ -69,7 +83,7 @@
                     </table></center>
             </div>
             <div id="tenbands" class="hellotext">Check this out, if you wish.</div>
-           
+
         </ui:define>
     </ui:composition>
 
