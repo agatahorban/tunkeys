@@ -13,8 +13,12 @@
 //
 window.onload = new Function("document.rotater.description.value=text[0]");
 
+var which = 0;
+var what = 0;
+
 function backward() {
     if (which > 0) {
+        
         window.status = '';
         which--;
         document.images.photoslider.src = photos[which];
@@ -29,9 +33,9 @@ function forward() {
         document.images.photoslider.src = photos[which];
         what++;
         document.rotater.description.value = text[what];
+        document.getElementById("curbndd").textContent = text[what];
+        alert(what);
     }
-    else
-        window.status = 'End of gallery';
 }
 
 function type()

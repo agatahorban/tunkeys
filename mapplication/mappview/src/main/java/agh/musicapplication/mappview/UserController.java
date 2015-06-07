@@ -5,7 +5,6 @@
  */
 package agh.musicapplication.mappview;
 
-import agh.musicapplication.mappdao.MUserBandRepository;
 import agh.musicapplication.mappdao.interfaces.MAlbumRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappdao.interfaces.MSongRepositoryInterface;
@@ -95,6 +94,12 @@ public class UserController implements Serializable {
             int i = 0;
             for (String img : getBandsRatedImages()) {
                 br.add(new BandRated("bnddiv" + Integer.toString(i), img));
+                i++;
+            }
+            i = 0;
+            for (String nm : getBandsRatedNames()) {
+                br.get(i).setName(nm);
+                br.get(i).setDivname2("bnddivn"+Integer.toString(i));
                 i++;
             }
         }
@@ -225,6 +230,9 @@ public class UserController implements Serializable {
 
         private String divname;
         private String value;
+        private String divname2;
+        private String name;
+       
 
         public BandRated(String d, String v) {
             this.divname = d;
@@ -247,6 +255,21 @@ public class UserController implements Serializable {
             this.value = value;
         }
 
+        public String getDivname2() {
+            return divname2;
+        }
+
+        public void setDivname2(String divname2) {
+            this.divname2 = divname2;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
     public int getBandsRatedSize() {

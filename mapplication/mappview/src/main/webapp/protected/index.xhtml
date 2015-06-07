@@ -14,21 +14,21 @@
         <ui:define name="body">  
 
             <div id="sizes" class="invisiblediv">#{existinguser.bandsRatedSize}</div>
-           
+
             <ui:repeat var="img" value="#{existinguser.br}" varStatus="status">
                 <div class="invisiblediv" id="#{img.divname}">#{img.value}</div>
+                <div class="invisiblediv" id="#{img.divname2}">#{img.name}</div>
             </ui:repeat>
+
             <script>
                 var photos = new Array();
                 var text = new Array();
-                var which = 0;
-                var what = 0;
 
                 var howMany = parseInt(document.getElementById("sizes").innerHTML);
                 for (var i = 0; i &lt; howMany; i++) {
-                    photos[i] = document.getElementById("bnddiv"+(i).toString()).innerHTML;
+                    photos[i] = document.getElementById("bnddiv" + (i).toString()).innerHTML;
+                    text[i] = document.getElementById("bnddivn" + (i).toString()).innerHTML;
                 }
-                
             </script>
             <h:outputScript library="js" name="photoseffect.js" />
 
@@ -36,7 +36,7 @@
             <div id="tenbands" class="normaltext">Ten bands you've rated lately:</div>
             <center>
                 <table border="0" cellpadding="0">
-                    <div class="bandtext">Alice in Chains</div>
+                   
                     <tr>
                         <td width="100%"><img src="#{existinguser.bandsRatedImages.get(0)}" width="400" height="264" name="photoslider"/></td>
                     </tr>
@@ -54,6 +54,9 @@
                     </tr>
                 </table>
             </center>
+            <h:outputScript library="js" name="photoseffect.js" />
+            <h:outputScript library="js" name="photoseffect.js" />
+            <h:outputScript library="js" name="photoseffect.js" />
             <div id="tenbands" class="hellotext">Your statistics:</div>
             <div class="normaltext">
                 <center><table id="statisticstable">
@@ -66,6 +69,7 @@
                     </table></center>
             </div>
             <div id="tenbands" class="hellotext">Check this out, if you wish.</div>
+           
         </ui:define>
     </ui:composition>
 
