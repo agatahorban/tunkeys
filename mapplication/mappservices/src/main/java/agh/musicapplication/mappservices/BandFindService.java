@@ -12,11 +12,15 @@ import agh.musicapplication.mappservices.interfaces.BandFindServiceInterface;
 import com.google.common.collect.Lists;
 import java.util.List;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author ag
  */
+@Service
+@Transactional
 public class BandFindService implements BandFindServiceInterface {
 
     @Inject
@@ -31,7 +35,7 @@ public class BandFindService implements BandFindServiceInterface {
             newList = reversed.subList(0, 9);
         }
         else {
-            newList = reversed.subList(0, reversed.size()-1);
+            newList = reversed.subList(0, reversed.size());
         }
         return newList;
     }

@@ -18,9 +18,14 @@ import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MSong;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappservices.UserStatisticsService;
+import agh.musicapplication.mappservices.interfaces.BandFindServiceInterface;
 import agh.musicapplication.mappservices.interfaces.UserStatisticsServiceInterface;
 import agh.musicapplication.mappview.cookies.CookieHelper;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -49,7 +54,7 @@ public class UserController implements Serializable {
 
     @Inject
     MUserAlbumRepositoryInterface uari;
-    
+
     @Inject
     MUserSongRepositoryInterface usri;
 
@@ -58,19 +63,23 @@ public class UserController implements Serializable {
 
     @Inject
     MAlbumRepositoryInterface ari;
-    
+
     @Inject
     MSongRepositoryInterface sri;
 
     @Inject
     UserStatisticsServiceInterface userStatisticsService;
-    
+
     @Inject
     CountController cc;
+
+    @Inject
+    BandFindServiceInterface bfi;
 
     private long vocalRated, bandRated;
     private double avgGrade;
     private int number;
+    private List<BandRated> br;
 
     @PostConstruct
     public void initalizeMUser() {
@@ -80,6 +89,15 @@ public class UserController implements Serializable {
         avgGrade = userStatisticsService.getAvgGradeOfSomeUser(muser);
         CookieHelper.setCookie("bandname", "", 10000000);
         number = 0;
+
+        br = new ArrayList<>();
+        if (getBandsRatedSize() > 0) {
+            int i = 0;
+            for (String img : getBandsRatedImages()) {
+                br.add(new BandRated("bnddiv" + Integer.toString(i), img));
+                i++;
+            }
+        }
     }
 
     public MUser getMuser() {
@@ -152,7 +170,7 @@ public class UserController implements Serializable {
 
     public boolean ifSongNotRated(Long song) {
         MSong s = sri.find(song);
-        if (s== null) {
+        if (s == null) {
             return false;
         }
         return usri.getCountOfMUserSong(muser, s).equals(0L);
@@ -173,4 +191,76 @@ public class UserController implements Serializable {
             return uari.getMUserAlbum(muser, ari.find(album)).getGrade();
         }
     }
+
+    public List<String> getBandsRatedNames() {
+        List<MBand> bandlist = bfi.findLatelyRatedBands(muser, 10);
+        List<String> names = new ArrayList<>();
+        for (MBand b : bandlist) {
+            names.add(b.getName());
+        }
+        return names;
+    }
+
+    public List<String> getBandsRatedImages() {
+        List<MBand> bandlist = bfi.findLatelyRatedBands(muser, 10);
+        List<String> imgs = new ArrayList<>();
+        for (MBand b : bandlist) {
+            imgs.add("/mappview/javax.faces.resource/" + b.getCover() + ".xhtml");
+        }
+        return imgs;
+    }
+
+    public Map<String, String> getBandsRatedImagesMap() {
+        Map<String, String> hm = new HashMap<>();
+        List<MBand> bandlist = bfi.findLatelyRatedBands(muser, 10);
+        int i = 0;
+        for (MBand b : bandlist) {
+            hm.put("bndimg" + Integer.toString(i), "/mappview/javax.faces.resource/" + b.getCover() + ".xhtml");
+            i++;
+        }
+        return hm;
+    }
+
+    public class BandRated {
+
+        private String divname;
+        private String value;
+
+        public BandRated(String d, String v) {
+            this.divname = d;
+            this.value = v;
+        }
+
+        public String getDivname() {
+            return divname;
+        }
+
+        public void setDivname(String divname) {
+            this.divname = divname;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+    }
+
+    public int getBandsRatedSize() {
+        return bfi.findLatelyRatedBands(muser, 10).size();
+
+    }
+
+    public List<BandRated> getBr() {
+        return br;
+    }
+
+    public void setBr(List<BandRated> br) {
+        this.br = br;
+    }
+    
+    
 }

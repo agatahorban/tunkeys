@@ -60,7 +60,6 @@ public class RatingController {
     public String rateBand(int rate, long band){
         MBand b = bri.find(band);
         rsi.rateBand(muser, b, rate);
-        b.setGenre(MGenre.ROCK);
         bri.update(b);
         return "bands.xhtml";
     }

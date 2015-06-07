@@ -41,15 +41,18 @@ public class CreatingUserController {
         try {
 
             String filepath = PathHolder.PATH + PathHolder.getFilename(file1);
+            Logger.getLogger(CreatingUserController.class.getName()).log(Level.SEVERE, "Zapisalem sciezke" + filepath);
             file1.write(filepath);
+            Logger.getLogger(CreatingUserController.class.getName()).log(Level.SEVERE, "Wrzucilem sciekze do pliku");
             user.setAvatar("img/" + PathHolder.getFilename(file1));
+            Logger.getLogger(CreatingUserController.class.getName()).log(Level.SEVERE, "Ustawilem avatar");
         } catch (IOException ex) {
             Logger.getLogger(DemoBean.class.getName()).log(Level.SEVERE, null, ex);
 
         } finally {
             uri.insert(user);
-            return "login";
         }
+        return "login";
     }
 
     public MUser getUser() {
