@@ -11,20 +11,20 @@ and open the template in the editor.
     <ui:composition template="/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
-               <script>
-                   function getCookieValue(){
+            <script>
+                function getCookieValue() {
                     var value = document.getElementById("bandInput").innerHTML;
                     document.cookie = "bandname=" + value + ";";
                 }
-                </script>
+            </script>
             <h1>Bands</h1>
             <h:form>
-                <h:inputText id="bandInput" value="#{redir.bandName}" required="true" />
-                <h:commandButton value="Search" type="submit" action="#{redir.goToBand()}" onmousedown="getCookieValue()" />
+                <center><h:inputText class="css-input" id="bandInput" value="#{redir.bandName}" required="true" />
+                    <h:commandButton class="btn" value="Search" type="submit" action="#{redir.goToBand()}" onmousedown="getCookieValue()" /></center>
             </h:form>
             <h:form > 
-                <h:commandButton value="Add new band" 
-                                 action="#{band.goToBandCreating()}"/>
+                <center><h:commandButton class="btn" value="Add new band" 
+                                         action="#{band.goToBandCreating()}"/></center>
 
             </h:form>
 

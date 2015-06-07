@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package agh.musicapplication.mappservices.interfaces;
 
-import agh.musicapplication.mappservices.GradeCountingService;
+import agh.musicapplication.mappmodel.MBand;
+import agh.musicapplication.mappmodel.MUser;
+import java.util.List;
 
 /**
  *
- * @author Agata
+ * @author ag
  */
-public interface GradeCoutingServiceInterface {
-    public GradeCountingService.GradeHolder countNewGrade(int oldCount, double oldGrade, int newGrade);
+public interface BandFindServiceInterface {
+    public List<MBand> findLatelyRatedBands(MUser user, int howMany);
+    
 }

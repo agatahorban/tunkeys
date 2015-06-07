@@ -5,6 +5,7 @@ import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MUser;
 import agh.musicapplication.mappmodel.MUserBand;
 import java.io.Serializable;
+import java.util.List;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +50,13 @@ public class MUserBandRepository extends AbstractCrudRepository<MUserBand> imple
         query.setParameter("band", band);
         MUserBand b = (MUserBand) query.uniqueResult();
         return b;
+    }
+
+    @Override
+    public List<MBand> getAllRatedBandsOfSomeUser(MUser user) {
+        Query query = getSession().createQuery("select m.band from MUserBand m where m.user=:user");
+        query.setParameter("user", user);
+        return (List<MBand>) query.list();
     }
 
 }

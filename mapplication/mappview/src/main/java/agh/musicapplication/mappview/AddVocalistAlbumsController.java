@@ -15,6 +15,7 @@ import agh.musicapplication.mappmodel.MAlbumSong;
 import agh.musicapplication.mappmodel.MGenre;
 import agh.musicapplication.mappmodel.MSong;
 import agh.musicapplication.mappmodel.MVocalist;
+import agh.musicapplication.mappview.util.PathHolder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -148,7 +149,7 @@ public class AddVocalistAlbumsController {
         album.setVocalist(currentVocalist);
         album.setGenre(getGenre(selectedGenre));
         try {
-            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(f1);
+            String filepath =  PathHolder.PATH + getFilename(f1);
             f1.write(filepath);
             album.setCover("img/" + getFilename(f1));
         } catch (IOException ex) {

@@ -9,6 +9,7 @@ import agh.musicapplication.mappdao.interfaces.MBandRepositoryInterface;
 import agh.musicapplication.mappmodel.MBand;
 import agh.musicapplication.mappmodel.MGenre;
 import agh.musicapplication.mappview.cookies.CookieHelper;
+import agh.musicapplication.mappview.util.PathHolder;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +50,7 @@ public class CreatingBandController {
     public String addBand() {
         newBand.setGenre(getGenre(selectedGenre));
         try {
-            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(file1);
+            String filepath =  PathHolder.PATH + getFilename(file1);
             file1.write(filepath);
             newBand.setCover("img/"+getFilename(file1));
         } catch (IOException ex) {

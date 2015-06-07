@@ -5,6 +5,7 @@
  */
 package agh.musicapplication.mappservices;
 
+import agh.musicapplication.mappservices.interfaces.GradeCoutingServiceInterface;
 import java.util.HashMap;
 import java.util.Map;
 import javax.transaction.Transactional;
@@ -16,8 +17,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Transactional
-public class GradeCountingService {
+public class GradeCountingService{
 
+ 
     public GradeHolder countNewGrade(int oldCount, double oldGrade, int newGrade) {
         GradeHolder holder = null;
         int c;

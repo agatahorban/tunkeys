@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package agh.musicapplication.mappview;
 
 import agh.musicapplication.mappdao.interfaces.MUserRepositoryInterface;
 import agh.musicapplication.mappmodel.MUser;
+import agh.musicapplication.mappview.util.PathHolder;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 import org.springframework.context.annotation.Scope;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,22 +21,35 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author ag
  */
-
 @Named("createuser")
 @Scope("request")
 @Transactional
 public class CreatingUserController {
+
     private MUser user;
-    
+
+    private Part file1;
+
     @Inject
     MUserRepositoryInterface uri;
 
     public CreatingUserController() {
         user = new MUser();
     }
-    
-     public void addUser(){
-        uri.insert(user);
+
+    public String addUser() {
+        try {
+
+            String filepath = PathHolder.PATH + PathHolder.getFilename(file1);
+            file1.write(filepath);
+            user.setAvatar("img/" + PathHolder.getFilename(file1));
+        } catch (IOException ex) {
+            Logger.getLogger(DemoBean.class.getName()).log(Level.SEVERE, null, ex);
+
+        } finally {
+            uri.insert(user);
+            return "login";
+        }
     }
 
     public MUser getUser() {
@@ -42,6 +59,13 @@ public class CreatingUserController {
     public void setUser(MUser user) {
         this.user = user;
     }
-     
-     
+
+    public Part getFile1() {
+        return file1;
+    }
+
+    public void setFile1(Part file1) {
+        this.file1 = file1;
+    }
+
 }

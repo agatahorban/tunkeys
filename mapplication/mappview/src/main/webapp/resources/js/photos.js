@@ -1,16 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-/*
- Photo Slider II- By Kevin Adams (kadams@kyk.net)
- For this script and more
- Visit http://www.javascriptkit.com
- */
-
 var photos = new Array();
 var text = new Array();
 var which = 0;

@@ -8,6 +8,7 @@ package agh.musicapplication.mappview;
 import agh.musicapplication.mappdao.interfaces.MVocalistRepositoryInterface;
 import agh.musicapplication.mappmodel.MGenre;
 import agh.musicapplication.mappmodel.MVocalist;
+import agh.musicapplication.mappview.util.PathHolder;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,7 +74,7 @@ public class CreatingVocalistController {
     public String addVocalist() {
         vocalist.setGenre(getGenre(selectedGenre));
         try {
-            String filepath = "C:\\Users\\Agatka\\Desktop\\apkaMuzyczna\\tunkeys\\mapplication\\mappview\\src\\main\\webapp\\resources\\img\\" + getFilename(file1);
+            String filepath =  PathHolder.PATH + getFilename(file1);
             file1.write(filepath);
             vocalist.setCover("img/" + getFilename(file1));
         } catch (IOException ex) {
